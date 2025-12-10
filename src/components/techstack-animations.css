@@ -1,0 +1,8 @@
+/* Animación secuencial para los íconos de tecnología */
+.tech-icon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tech-icon.pop {
+  transform: scale(1.25) rotate(6deg);
+  z-index: 1;
+}

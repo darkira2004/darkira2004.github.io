@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  min-height: 100vh;
+  background: rgb(15, 23, 42); /* azul original BG */
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+#spotlight-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* importantísimo */
+  background: transparent;
+  transition: background 0.2s ease-out;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+
+.chip {
+  @apply px-3 py-1 rounded-full bg-slate-800/50 text-slate-300 text-sm border border-slate-700/50;
+}
