@@ -11,6 +11,7 @@ import TechStackSection from "./sections/TechStackSection";
 import FondoEstrellas from "./components/FondoEstrellas";
 import BlueToneSelector from "./components/BlueToneSelector";
 
+import TourGuide from "./components/TourGuide";
 
 export default function App() {
 
@@ -30,10 +31,10 @@ export default function App() {
         { key: "certificates", id: "certificates" },
         { key: "techstack", id: "techstack" },
       ];
-      
+
       const viewportMiddle = window.innerHeight / 3;
       let closest = { key: "about", distance: Infinity };
-      
+
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el) {
@@ -56,6 +57,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full text-white font-inter relative">
+      <TourGuide blueTone={blueTone} />
       <BlueToneSelector value={blueTone} onChange={setBlueTone} />
       <FondoEstrellas blueTone={blueTone} />
       <div className="lg:flex min-h-screen relative z-0">

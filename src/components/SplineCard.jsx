@@ -26,6 +26,7 @@ export default function SplineCard() {
       `}</style>
 
       <div
+        id="spline-card-tour"
         className="spline-wrapper flex justify-center"
         style={{
           width: "600px",

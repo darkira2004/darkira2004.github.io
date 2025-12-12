@@ -8,7 +8,7 @@ const blueTones = [
   { name: "Eclipse Marino", value: "#0c1b35ff" },
   { name: "Nieve de la Luna", value: "#1a202cff" },
   { name: "Aurora Boreal", value: "#0a3d62ff" },
-    { name: "Cielo Nocturno", value: "#121b2bff" },
+  { name: "Cielo Nocturno", value: "#121b2bff" },
 ];
 
 export default function BlueToneSelector({
@@ -58,7 +58,7 @@ export default function BlueToneSelector({
   };
 
   return (
-    <div ref={wrapperRef} className={`fixed top-6 right-6 z-[9999] ${className}`}>
+    <div id="blue-tone-selector-tour" ref={wrapperRef} className={`fixed top-6 right-6 z-[9999] ${className}`}>
       {/* ORB */}
       <button
         type="button"
@@ -111,10 +111,9 @@ export default function BlueToneSelector({
                   text-[13px]
                   transition-all
                   select-none
-                  ${
-                    active
-                      ? "bg-white/15 text-white shadow-inner backdrop-blur-sm"
-                      : "text-slate-300 hover:bg-white/8 hover:text-white"
+                  ${active
+                    ? "bg-white/15 text-white shadow-inner backdrop-blur-sm"
+                    : "text-slate-300 hover:bg-white/8 hover:text-white"
                   }
                 `}
               >
