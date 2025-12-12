@@ -54,15 +54,15 @@ export default function App() {
       <FondoEstrellas blueTone={blueTone} />
       <div className="lg:flex min-h-screen relative z-0">
         {/* Perfil solo visible en mobile */}
-        <div className="block lg:hidden pt-20 pb-5 ml-auto  flex flex-col items-start max-w-3xl mx-auto">
+        <div className="block lg:hidden pt-12 sm:pt-20 pb-5 px-4 sm:px-6 flex flex-col items-start max-w-3xl mx-auto">
           <Profile />
-          <div className="mt-10">
+          <div className="mt-6 sm:mt-10">
             <SocialLinks />
           </div>
         </div>
 
         {/* COLUMNA IZQUIERDA — FIJA EN LG */}
-        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen pl-24 justify-center bg-transparent">
+        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen pl-12 xl:pl-24 justify-center bg-transparent">
           <div className="flex flex-col gap-y-10 w-full justify-center items-start h-full">
             <Profile />
             <SideNav activeSection={activeSection} />
@@ -71,7 +71,7 @@ export default function App() {
           </div>
         </aside>
         {/* COLUMNA DERECHA — CON SCROLL */}
-        <main className=" flex flex-col justify-center max-w-3xl mx-auto lg:w-50%]">
+        <main className="flex flex-col justify-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 lg:w-[50%]">
           <CurrentSectionHeader />
           <AboutSection />
           {/* Linea dividora */}
