@@ -1,9 +1,26 @@
+import { useState } from "react";
+import { DocumentTextIcon } from "@heroicons/react/24/outline";
+
 export default function ProjectsSection() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentDoc, setCurrentDoc] = useState("");
+
+  const handleOpenDocument = (docPath) => {
+    setCurrentDoc(docPath);
+    setIsModalOpen(true);
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
   return (
     <section
       id="projects" className="pt-2 py-5" data-label="projects"
     >
-      <div className="space-y-10">
+      <div className="space-y-5">
 
         {/* CARD TESIS YOLO */}
         <div
@@ -66,26 +83,28 @@ export default function ProjectsSection() {
               <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
                 2025 — PUBLICACIÓN ACEPTADA
               </span>
-              <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-[#64ffda] transition-colors">
-                Publicación Científica · LEIRD / LACCEI
-              </h3>
+              <div className="flex items-center gap-3">
+                <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-[#64ffda] transition-colors">
+                  Publicación Científica · LEIRD / LACCEI
+                </h3>
+                <button
+                  onClick={() => handleOpenDocument("/assets/docs/Contribution_420_final_a.pdf")}
+                  className="
+                    text-xs font-medium text-cyan-400 
+                    border border-cyan-400 rounded px-2 py-0.5
+                    hover:bg-cyan-400/10 transition-colors
+                    cursor-pointer inline-flex items-center gap-1
+                  "
+                >
+                  <DocumentTextIcon className="w-3.5 h-3.5" />
+                  Ver artículo
+                </button>
+              </div>
 
               <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                 Artículo aceptado como autor principal sobre métodos de inteligencia artificial aplicados
                 a la automatización de procesos en la conferencia LEIRD 2025.
               </p>
-
-              <div className="mt-3">
-                <span
-                  className="
-                    inline-block text-[12px] italic text-cyan-400 bg-white/5 backdrop-blur
-                    px-3 py-2 rounded-md border border-white/10 leading-relaxed
-                  "
-                >
-                  Por políticas de exclusividad académica, el manuscrito no puede ser divulgado públicamente
-                  hasta la indexación oficial posterior al evento.
-                </span>
-              </div>
 
               <div className="flex justify-center mt-5">
                 <img
@@ -107,6 +126,32 @@ export default function ProjectsSection() {
         </div>
 
       </div>
+
+      {/* MODAL */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={handleBackdropClick}
+        >
+          <div
+            className="relative w-full max-w-5xl h-[85vh] flex flex-col animate-fadeIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setIsModalOpen(false)}
+              className="absolute -top-10 right-0 text-slate-400 hover:text-white"
+            >
+              ✕
+            </button>
+
+            <iframe
+              src={currentDoc}
+              className="w-full h-full rounded-md shadow-2xl bg-slate-900"
+              title="Documento"
+            ></iframe>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
