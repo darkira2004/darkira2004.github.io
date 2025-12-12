@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
 
 export default function CurrentSectionHeader() {
-  const [current, setCurrent] = useState("ABOUT");
+  const [current, setCurrent] = useState("SOBRE MÍ");
+
+  const sectionNames = {
+    about: "SOBRE MÍ",
+    experience: "EXPERIENCIA",
+    projects: "PROYECTOS",
+    certificates: "CERTIFICADOS",
+    techstack: "TECNOLOGÍAS"
+  };
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setCurrent(entry.target.dataset.label.toUpperCase());
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      const viewportMiddle = window.innerHeight / 3;
+      let closest = { label: "about", distance: Infinity };
+      
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < viewportMiddle && rect.bottom > 0) {
+          const distance = Math.abs(rect.top);
+          if (distance < closest.distance) {
+            closest = { label: section.dataset.label, distance };
           }
-        });
-      },
-      { threshold: 0.5 }
-    );
+        }
+      });
+      
+      setCurrent(sectionNames[closest.label] || closest.label.toUpperCase());
+    };
 
-    sections.forEach((sec) => observer.observe(sec));
-    return () => sections.forEach((sec) => observer.unobserve(sec));
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (

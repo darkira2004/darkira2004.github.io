@@ -111,7 +111,7 @@ export default function CertificatesSection() {
             </div>
 
             {/* GRID */}
-            <div className="flex flex-wrap justify-center gap-6 md:gap-5 items-center ml-4 mr-4">
+            <div className="flex flex-wrap justify-center gap-3 md:gap-4 items-center ml-4 mr-4">
                 {certificates.map((cert) => {
                     const isBlue = cert.color === "blue";
                     const isGreen = cert.color === "emerald";
@@ -119,7 +119,7 @@ export default function CertificatesSection() {
                     const isViolet = cert.color === "violet";
                     const isRed = cert.color === "red";
 
-                    const commonDimensions = "w-32 h-32 md:w-40 md:h-40";
+                    const commonDimensions = "w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36";
                     const hoverEffect = "transform transition-transform duration-300 hover:scale-105";
 
                     // === PURE IMAGE BADGE (Cisco)
@@ -181,34 +181,34 @@ export default function CertificatesSection() {
                     return (
                         <div
                             key={cert.id}
-                            className={`group relative p-3 rounded-2xl border cursor-pointer 
+                            className={`group relative p-2 sm:p-2.5 rounded-xl border cursor-pointer 
                             ${commonDimensions} flex flex-col justify-between ${containerClasses} ${hoverEffect}`}
                             onClick={() => handleOpenCertificate(cert.path)}
                         >
                             <div className="flex items-start justify-between">
-                                <div className={`p-2 rounded-lg ${iconBg}`}>
+                                <div className={`p-1.5 rounded-lg ${iconBg}`}>
                                     {cert.icon}
                                 </div>
-                                <span className={`text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded ${yearBadge}`}>
+                                <span className={`text-[8px] font-mono font-semibold px-1 py-0.5 rounded ${yearBadge}`}>
                                     {cert.year}
                                 </span>
                             </div>
 
-                            <h3 className={`text-[10px] font-bold text-slate-100 leading-snug line-clamp-3 ${titleHover}`}>
+                            <h3 className={`text-[9px] sm:text-[10px] font-bold text-slate-100 leading-snug line-clamp-3 ${titleHover}`}>
                                 {cert.title}
                             </h3>
 
-                            <p className="text-[9px] text-slate-400 leading-tight line-clamp-2">
+                            <p className="text-[8px] sm:text-[9px] text-slate-400 leading-tight line-clamp-2">
                                 {cert.description}
                             </p>
 
-                            <div className="flex items-center gap-1.5 text-[10px] font-semibold text-slate-500 group-hover:text-slate-300 transition-colors">
+                            <div className="flex items-center gap-1 text-[9px] font-semibold text-slate-500 group-hover:text-slate-300 transition-colors">
                                 <MdVerified className={isBlue ? "text-blue-500" :
                                     isGreen ? "text-emerald-500" :
                                         isYellow ? "text-yellow-400" :
                                             isViolet ? "text-violet-400" :
                                                 "text-red-400"} />
-                                <span>Ver certificado</span>
+                                <span className="text-[8px] sm:text-[9px]">Ver certificado</span>
                             </div>
                         </div>
                     );

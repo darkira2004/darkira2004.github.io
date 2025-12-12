@@ -30,14 +30,20 @@ export default function App() {
         { key: "certificates", id: "certificates" },
         { key: "techstack", id: "techstack" },
       ];
+      
+      const viewportMiddle = window.innerHeight / 3;
       let closest = { key: "about", distance: Infinity };
+      
       for (const section of sections) {
         const el = document.getElementById(section.id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          const distance = Math.abs(rect.top - 120);
-          if (distance < closest.distance) {
-            closest = { key: section.key, distance };
+          // Si la sección está visible en el viewport
+          if (rect.top < viewportMiddle && rect.bottom > 0) {
+            const distance = Math.abs(rect.top);
+            if (distance < closest.distance) {
+              closest = { key: section.key, distance };
+            }
           }
         }
       }
