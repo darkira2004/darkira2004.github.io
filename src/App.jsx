@@ -80,8 +80,8 @@ export default function App() {
         </aside>
         {/* COLUMNA DERECHA — CON SCROLL */}
         <main className="flex flex-col justify-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 lg:w-[50%]">
-          <CurrentSectionHeader />
-          <AboutSection />
+          <CurrentSectionHeader/>
+          <AboutSection/>
           {/* Linea dividora */}
           <div className="w-full h-[1px] bg-slate-700/30"></div>
           <ExperienceSection />

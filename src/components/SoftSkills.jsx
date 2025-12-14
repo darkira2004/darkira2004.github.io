@@ -14,11 +14,11 @@ export default function SoftSkills() {
     return (
         <div className="mt-4 w-full max-w-[600px] mx-auto px-4 mb-6">
             <div className="flex items-center gap-4 mb-6">
-                <div className="h-[1px] flex-1 bg-slate-800"></div>
+                <div className="h-[0.5px] flex-1 bg-slate-700/30"></div>
                 <h3 className="text-center text-xs font-bold text-slate-500 uppercase tracking-[0.2em]">
                     Habilidades Blandas
                 </h3>
-                <div className="h-[1px] flex-1 bg-slate-800"></div>
+                <div className="h-[0.5px] flex-1 bg-slate-700/30"></div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-3">

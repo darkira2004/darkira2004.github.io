@@ -7,7 +7,7 @@ const blueTones = [
   { name: "Trueno del Crepúsculo", value: "#1e293bff" },
   { name: "Eclipse Marino", value: "#0c1b35ff" },
   { name: "Nieve de la Luna", value: "#1a202cff" },
-  { name: "Aurora Boreal", value: "#0a3d62ff" },
+  { name: "Aurora Boreal", value: "#0a3d626d" },
   { name: "Cielo Nocturno", value: "#121b2bff" },
 ];
 

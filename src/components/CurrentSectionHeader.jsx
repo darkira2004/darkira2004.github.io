@@ -4,7 +4,7 @@ export default function CurrentSectionHeader() {
   const [current, setCurrent] = useState("SOBRE MÍ");
 
   const sectionNames = {
-    about: "SOBRE MÍ",
+    about: "ACERCA DE MÍ",
     experience: "EXPERIENCIA",
     projects: "PROYECTOS",
     certificates: "CERTIFICADOS",
