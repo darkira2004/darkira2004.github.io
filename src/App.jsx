@@ -70,11 +70,11 @@ export default function App() {
         </div>
 
         {/* COLUMNA IZQUIERDA — FIJA EN LG */}
-        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen pl-12 xl:pl-24 justify-center bg-transparent">
-          <div className="flex flex-col gap-y-10 w-full justify-center items-start h-full">
+        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen pl-12 xl:pl-24 py-12 overflow-y-auto bg-transparent">
+          <div className="flex flex-col gap-y-10 w-full justify-center items-start min-h-full">
             <Profile />
             <SideNav activeSection={activeSection} />
-            <div className="mt-12"></div>
+            <div className="flex-1"></div>
             <SocialLinks />
           </div>
         </aside>

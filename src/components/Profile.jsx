@@ -12,7 +12,7 @@ export default function Profile() {
 				Ingeniería de Sistemas
 			</p>
 
-			<p className="text-sm sm:text-md text-slate-400 leading-relaxed mb-2 max-w-xs sm:max-w-md">
+			<p className="text-sm sm:text-md text-slate-400 leading-relaxed mb-2 max-w-xs sm:max-w-sm">
 				Desarrollador Full Stack en formación, con experiencia práctica en proyectos reales y alta disposición para aprender.
 			</p>
 
