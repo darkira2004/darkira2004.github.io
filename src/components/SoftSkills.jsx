@@ -1,15 +1,13 @@
 
-import { FaUsers, FaLightbulb, FaHandshake, FaClock } from "react-icons/fa";
+import { FaUsers, FaHandshake, FaRocket, FaBolt } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
-import { MdPsychology } from "react-icons/md";
 
 const skills = [
     { name: "Trabajo en Equipo", icon: <FaUsers /> },
-    { name: "Resolución de Problemas", icon: <FaLightbulb /> },
-    { name: "Comunicación Efectiva", icon: <FaHandshake /> },
+    { name: "Comunicación", icon: <FaHandshake /> },
     { name: "Adaptabilidad", icon: <GiBrain /> },
-    { name: "Inteligencia Emocional", icon: <MdPsychology /> },
-    { name: "Gestión del Tiempo", icon: <FaClock /> },
+    { name: "Proactividad", icon: <FaRocket /> },
+    { name: "Aprendizaje Rápido", icon: <FaBolt /> },
 ];
 
 export default function SoftSkills() {
