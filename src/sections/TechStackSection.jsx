@@ -15,7 +15,8 @@ import {
   SiSwagger,
   SiPostgresql,
   SiJson,
-  SiMysql,
+  SiTypescript,
+  SiAngular,
 } from "react-icons/si";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { FaRobot } from "react-icons/fa6";     // ChatGPT icon substitute
@@ -29,7 +30,9 @@ const categories = [
     title: "Frontend",
     items: [
       { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
+      { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
       { name: "React", icon: <FaReact className="text-cyan-400" /> },
+      { name: "Angular", icon: <SiAngular className="text-red-600" /> },
       { name: "HTML5", icon: <FaHtml5 className="text-orange-500" /> },
       { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
       { name: "TailwindCSS", icon: <SiTailwindcss className="text-cyan-500" /> },
@@ -49,7 +52,7 @@ const categories = [
     title: "Bases de Datos",
     items: [
       { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-800" /> },
-      { name: "MySQL", icon: <SiMysql className="text-[#d9534f]" /> },
+      { name: "SQL Server", icon: <FaDatabase className="text-yellow-500" /> },
     ],
   },
   {
@@ -82,20 +85,17 @@ const TechStackSection = () => {
     let interval;
     if (hovered) {
       let flat = categories.flatMap((c) => c.items);
-      let idx = 0;
-      setActiveIdx(0);
+      let idx = -1;
       interval = setInterval(() => {
         idx = (idx + 1) % flat.length;
         setActiveIdx(idx);
       }, 160);
-    } else {
-      setActiveIdx(-1);
     }
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) clearInterval(interval);
+      if (!hovered) setActiveIdx(-1);
+    };
   }, [hovered]);
-
-  /* Lista lineal para sincronizar animación */
-  const flatStack = categories.flatMap((c) => c.items);
 
   return (
     <section id="techstack" className="pt-2 py-10" data-label="techstack">
@@ -111,8 +111,8 @@ const TechStackSection = () => {
               </h3>
 
               <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
-                Tecnologías utilizadas para construir aplicaciones web, APIs, sistemas administrativos
-                y proyectos de visión computacional con inteligencia artificial.
+                Tecnologías utilizadas para construir aplicaciones web, APIs, sistemas administrativos y proyectos de visión computacional con inteligencia artificial
+                (usadas en proyectos reales y personales; en constante proceso de aprendizaje). Algunas tecnologías han sido utilizadas como base o complemento dentro de proyectos específicos, mientras que otras constituyen el foco principal de desarrollo.
               </p>
 
               {/* GRID */}
