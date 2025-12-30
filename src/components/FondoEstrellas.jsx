@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 const STAR_COUNT = 250;
 const STAR_COLOR = "#fff";
 const STAR_SIZE = 1.1;
-const STAR_SPEED = 0.099;
+const STAR_SPEED = 0.2;
 
 function randomBetween(a, b) {
 	return a + Math.random() * (b - a);
@@ -40,6 +40,7 @@ export default function FondoEstrellas({ blueTone }) {
 		}));
 
 		function draw() {
+			
 			ctx.clearRect(0, 0, width, height);
 			for (let star of stars.current) {
 				// Movimiento tipo "Gojo infinito": las estrellas se acercan al centro

@@ -17,7 +17,7 @@ export default function Profile() {
 			</p>
 
 			<a 
-				href="/assets/docs/CV_Ricardo_Villegas_Chavez.pdf" 
+				href="/assets/docs/CV_Ricardo_Alexander_Villegas_Chavez.pdf" 
 				download
 				className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium bg-emerald-400/10 text-emerald-300 ring-emerald-400/20 ring-1 ring-inset hover:bg-emerald-400/20 transition-all w-fit mt-2"
 			>
