@@ -60,7 +60,7 @@ export default function App() {
       <TourGuide blueTone={blueTone} />
       <BlueToneSelector value={blueTone} onChange={setBlueTone} />
       <FondoEstrellas blueTone={blueTone} />
-      <div className="lg:flex min-h-screen relative z-0">
+      <div className="lg:flex min-h-screen relative z-0 max-w-7xl mx-auto">
         {/* Perfil solo visible en mobile */}
         <div className="block lg:hidden pt-12 sm:pt-20 pb-5 px-4 sm:px-6 flex flex-col items-start max-w-3xl mx-auto">
           <Profile />
@@ -79,9 +79,9 @@ export default function App() {
           </div>
         </aside>
         {/* COLUMNA DERECHA — CON SCROLL */}
-        <main className="flex flex-col justify-center max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 lg:w-[50%]">
-          <CurrentSectionHeader/>
-          <AboutSection/>
+        <main className="flex flex-col justify-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 lg:w-[50%]">
+          <CurrentSectionHeader />
+          <AboutSection />
           {/* Linea dividora */}
           <div className="w-full h-[1px] bg-slate-700/30"></div>
           <ExperienceSection />
