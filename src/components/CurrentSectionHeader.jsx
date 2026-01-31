@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import BlueToneSelector from "./BlueToneSelector";
 
-export default function CurrentSectionHeader() {
+export default function CurrentSectionHeader({ blueTone, onBlueToneChange }) {
   const [current, setCurrent] = useState("SOBRE MÍ");
 
   const sectionNames = {
@@ -33,13 +34,20 @@ export default function CurrentSectionHeader() {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="md:hidden fixed top-0 left-0 w-full bg-[#0e1525]/60 backdrop-blur-md z-40 border-b border-white/5 px-6 py-4">
-      <span className="text-sm tracking-widest text-white/60 font-semibold">
-        {current}
-      </span>
+    <div 
+      className="lg:hidden fixed top-0 inset-x-0 backdrop-blur-xl z-40 border-b border-white/10 safe-area-inset"
+      style={{ backgroundColor: blueTone ? `${blueTone.slice(0, 7)}e6` : "rgba(0,0,0,0.9)" }}
+    >
+      <div className="flex items-center justify-between h-12 px-4">
+        <span className="text-xs tracking-[0.2em] text-white/90 font-semibold uppercase">
+          {current}
+        </span>
+        <BlueToneSelector value={blueTone} onChange={onBlueToneChange} />
+      </div>
     </div>
   );
 }

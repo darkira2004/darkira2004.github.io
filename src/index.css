@@ -2,26 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   min-height: 100vh;
-  background: rgb(15, 23, 42); /* azul original BG */
+  min-height: 100dvh;
+  background: rgb(15, 23, 42);
   position: relative;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #spotlight-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0; /* importantísimo */
+  z-index: 0;
   background: transparent;
   transition: background 0.2s ease-out;
 }
-html {
-  scroll-behavior: smooth;
+
+/* Safe area para dispositivos con notch */
+.safe-area-inset {
+  padding-top: env(safe-area-inset-top, 0);
 }
 
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.5);
+}
 
 .chip {
   @apply px-3 py-1 rounded-full bg-slate-800/50 text-slate-300 text-sm border border-slate-700/50;

@@ -1,32 +1,9 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 
 export default function ExperienceSection() {
-
-  // Lista de tus videos
-  const playlist = [
-    "/assets/video/videoYolo.mp4",
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const videoRef = useRef(null);
-
-  const handleEnded = () => {
-    const nextIndex = currentIndex + 1;
-
-    if (nextIndex < playlist.length) {
-      setCurrentIndex(nextIndex);
-      videoRef.current.src = playlist[nextIndex];
-      videoRef.current.play();
-    } else {
-      // Si quieres que reinicie la playlist automáticamente:
-      // setCurrentIndex(0);
-      // videoRef.current.src = playlist[0];
-      // videoRef.current.play();
-    }
-  };
-
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
   return (
     <section id="experience" className="pt-2 py-5" data-label="experience">
       <div className="space-y-20">
@@ -87,17 +64,15 @@ export default function ExperienceSection() {
                 />
               </div>
               {/* BADGES */}
-              <div className="flex flex-wrap gap-2 mt-5 flex justify-center">
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-blue-400/10 text-blue-300 ring-blue-400/20 ring-1 ring-inset">PHP</span>
-                {/* span de javaScript */}
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-yellow-400/10 text-yellow-300 ring-yellow-400/20 ring-1 ring-inset">JavaScript</span>
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-indigo-400/10 text-indigo-300 ring-indigo-400/20 ring-1 ring-inset">PostgreSQL</span>
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-yellow-400/10 text-yellow-300 ring-yellow-400/20 ring-1 ring-inset">MVC</span>
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-sky-400/10 text-sky-300 ring-sky-400/20 ring-1 ring-inset">Tabler CSS</span>
-                <span className="inline-flex items-center flex justify-center rounded-md px-2 py-1 text-xs font-medium bg-emerald-400/10 text-emerald-300 ring-emerald-400/20 ring-1 ring-inset">
+              <div className="flex flex-wrap justify-center gap-2 mt-5">
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-blue-400/10 text-blue-300 ring-blue-400/20 ring-1 ring-inset">PHP</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-yellow-400/10 text-yellow-300 ring-yellow-400/20 ring-1 ring-inset">JavaScript</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-indigo-400/10 text-indigo-300 ring-indigo-400/20 ring-1 ring-inset">PostgreSQL</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-yellow-400/10 text-yellow-300 ring-yellow-400/20 ring-1 ring-inset">MVC</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-sky-400/10 text-sky-300 ring-sky-400/20 ring-1 ring-inset">Tabler CSS</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-emerald-400/10 text-emerald-300 ring-emerald-400/20 ring-1 ring-inset">
                   Digitalización Municipal
                 </span>
-
               </div>
             </div>
           </div>

@@ -1,5 +1,3 @@
-// src/components/SideNav.tsx
-
 export default function SideNav({ activeSection }) {
   const items = [
     { label: "ACERCA DE", href: "#about", key: "about" },
@@ -10,36 +8,32 @@ export default function SideNav({ activeSection }) {
   ];
 
   return (
-    <div className="flex flex-col font-inter text-white ml-9">
-      <nav className="flex flex-col gap-4 mt-4">
-        {items.map((item) => {
-          const isActive = activeSection === item.key;
-          return (
-            <a
-              key={item.key}
-              href={item.href}
-              className="group flex items-center py-1 gap-4"
+    <nav className="flex flex-col gap-2.5 font-inter text-white mt-10">
+      {items.map((item) => {
+        const isActive = activeSection === item.key;
+        return (
+          <a
+            key={item.key}
+            href={item.href}
+            className="group flex items-center gap-4 py-1"
+          >
+            <span
+              className={`block h-px transition-all duration-150 ease-out ${
+                isActive
+                  ? "w-16 bg-white"
+                  : "w-8 bg-slate-600 group-hover:w-16 group-hover:bg-white"
+              }`}
+            />
+            <span
+              className={`text-[11px] font-semibold uppercase tracking-widest transition-colors ${
+                isActive ? "text-white" : "text-slate-500 group-hover:text-white"
+              }`}
             >
-              <span
-                className={`block transition-all duration-100 ease-in-out
-                  ${isActive
-                    ? "w-16 h-[1px] bg-white"
-                    : "w-8 h-[1px] bg-white/20 group-hover:w-16 group-hover:bg-white"}
-                `}
-              ></span>
-              <span
-                className={`nav-text text-xs font-bold uppercase tracking-widest
-                  ${isActive
-                    ? "text-white"
-                    : "text-slate-500 group-hover:text-white"}
-                `}
-              >
-                {item.label}
-              </span>
-            </a>
-          );
-        })}
-      </nav>
-    </div>
+              {item.label}
+            </span>
+          </a>
+        );
+      })}
+    </nav>
   );
 }

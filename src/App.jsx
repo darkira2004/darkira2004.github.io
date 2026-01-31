@@ -58,41 +58,42 @@ export default function App() {
   return (
     <div className="min-h-screen w-full text-white font-inter relative">
       <TourGuide blueTone={blueTone} />
-      <BlueToneSelector value={blueTone} onChange={setBlueTone} />
+      {/* Selector de tema flotante solo en desktop */}
+      <div className="hidden lg:block fixed top-6 right-6 z-[9999]">
+        <BlueToneSelector value={blueTone} onChange={setBlueTone} />
+      </div>
       <FondoEstrellas blueTone={blueTone} />
-      <div className="lg:flex min-h-screen relative z-0 max-w-7xl mx-auto">
+      
+      <div className="lg:flex min-h-screen relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Perfil solo visible en mobile */}
-        <div className="block lg:hidden pt-12 sm:pt-20 pb-5 px-4 sm:px-6 flex flex-col items-start max-w-3xl mx-auto">
+        <header className="flex flex-col items-start w-full pt-16 pb-6 lg:hidden">
           <Profile />
-          <div className="mt-6 sm:mt-10">
+          <div className="mt-6">
             <SocialLinks />
           </div>
-        </div>
+        </header>
 
         {/* COLUMNA IZQUIERDA — FIJA EN LG */}
-        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen pl-12 xl:pl-24 py-12 overflow-y-auto bg-transparent">
-          <div className="flex flex-col gap-y-10 w-full justify-center items-start min-h-full">
+        <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen w-[45%] xl:w-[40%] py-20 xl:py-28 pr-8 xl:pr-16">
+          <div className="flex flex-col w-full h-full">
             <Profile />
             <SideNav activeSection={activeSection} />
-            <div className="flex-1"></div>
+            <div className="flex-1 min-h-[100px]" />
             <SocialLinks />
           </div>
         </aside>
+
         {/* COLUMNA DERECHA — CON SCROLL */}
-        <main className="flex flex-col justify-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 lg:w-[50%]">
-          <CurrentSectionHeader />
+        <main className="flex-1 lg:w-[55%] xl:w-[60%] py-6 lg:py-24 space-y-2">
+          <CurrentSectionHeader blueTone={blueTone} onBlueToneChange={setBlueTone} />
           <AboutSection />
-          {/* Linea dividora */}
-          <div className="w-full h-[1px] bg-slate-700/30"></div>
+          <div className="w-full h-px bg-slate-700/30" />
           <ExperienceSection />
-          {/* Linea dividora */}
-          <div className="w-full h-[1px] bg-slate-700/30"></div>
+          <div className="w-full h-px bg-slate-700/30" />
           <ProjectsSection />
-          {/* Linea dividora */}
-          <div className="w-full h-[1px] bg-slate-700/30"></div>
+          <div className="w-full h-px bg-slate-700/30" />
           <CertificatesSection />
-          {/* Linea dividora */}
-          <div className="w-full h-[1px] bg-slate-700/30"></div>
+          <div className="w-full h-px bg-slate-700/30" />
           <TechStackSection />
         </main>
       </div>
