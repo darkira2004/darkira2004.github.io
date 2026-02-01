@@ -3,10 +3,74 @@ import { useState } from "react";
 
 export default function ExperienceSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+
   return (
     <section id="experience" className="pt-2 py-5" data-label="experience">
       <div className="space-y-20">
+        {/* CARD AC MONSEFU */}
+        <div
+          className="
+            group p-6 md:p-10
+            transition-all duration-200
+            border border-transparent
+            rounded-none md:rounded-md
+          "
+        >
+          <div className="flex flex-col md:flex-row gap-2 md:gap-8">
+            <div className="flex-1">
+              <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
+                ENE 2026
+              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                <h3
+                  className="
+                    text-sm font-medium text-slate-100 tracking-tight
+                    group-hover:text-[#64ffda] transition-colors
+                  "
+                >
+                  Desarrollador Web · AC Monsefú
+                </h3>
+                <a
+                  href="https://acmonsefu.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    text-xs font-medium text-[#64ffda] 
+                    border border-[#64ffda] rounded px-2 py-0.5
+                    hover:bg-[#64ffda]/10 transition-colors
+                    cursor-pointer
+                    no-underline
+                  "
+                >
+                  Visitar sitio
+                </a>
+              </div>
+              <p className="text-slate-400 text-sm mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+                Desarrollo de la plataforma para el festival <strong>'Golpe Tierra 2026'</strong> de AC Monsefú.
+                El sistema permite el registro de concursantes con generación automática de ficha en PDF,
+                e incluye un panel administrativo seguro para gestionar inscripciones y exportar reportes a Excel.
+              </p>
+
+              <div className="flex justify-center mt-5">
+                <img
+                  src="/assets/experiencia/img/golpeTierra2026.png"
+                  alt="Golpe Tierra 2026"
+                  className="rounded-sm w-full max-w-xl h-auto shadow-md border border-slate-700/30 transition-colors"
+                />
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-2 mt-5">
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-blue-400/10 text-blue-300 ring-blue-400/20 ring-1 ring-inset">React</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-cyan-400/10 text-cyan-300 ring-cyan-400/20 ring-1 ring-inset">Tailwind</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-emerald-400/10 text-emerald-300 ring-emerald-400/20 ring-1 ring-inset">Supabase</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-indigo-400/10 text-indigo-300 ring-indigo-400/20 ring-1 ring-inset">PostgreSQL</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-orange-400/10 text-orange-300 ring-orange-400/20 ring-1 ring-inset">Production</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-pink-400/10 text-pink-300 ring-pink-400/20 ring-1 ring-inset">Custom Domain</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CARD DIMAC */}
         <div
           className="
@@ -58,7 +122,7 @@ export default function ExperienceSection() {
               {/* VIDEO */}
               <div className="flex justify-center mt-5">
                 <video
-                  src="/assets/video/dimac.mp4"
+                  src="/assets/experiencia/video/dimac.mp4"
                   controls
                   className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
                 />

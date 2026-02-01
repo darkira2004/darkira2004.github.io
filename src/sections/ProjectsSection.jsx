@@ -56,7 +56,7 @@ export default function ProjectsSection() {
 
               <div className="flex justify-center mt-5">
                 <video
-                  src="/assets/video/videoYolo.mp4"
+                  src="/assets/proyectos/video/videoYolo.mp4"
                   controls
                   className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
                 />
