@@ -58,6 +58,7 @@ export default function ProjectsSection() {
                 <video
                   src="/assets/proyectos/video/videoYolo.mp4"
                   controls
+                  preload="metadata"
                   className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
                 />
               </div>
@@ -110,6 +111,7 @@ export default function ProjectsSection() {
                 <img
                   src="/assets/img/LEIRD-2025.png"
                   alt="LEIRD 2025 Banner"
+                  loading="lazy"
                   className="rounded-sm w-full max-w-xl h-auto shadow-md border border-slate-700/30 transition-colors"
                 />
               </div>

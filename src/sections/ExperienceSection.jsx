@@ -55,6 +55,7 @@ export default function ExperienceSection() {
                 <img
                   src="/assets/experiencia/img/golpeTierra2026.png"
                   alt="Golpe Tierra 2026"
+                  loading="lazy"
                   className="rounded-sm w-full max-w-xl h-auto shadow-md border border-slate-700/30 transition-colors"
                 />
               </div>
@@ -124,6 +125,7 @@ export default function ExperienceSection() {
                 <video
                   src="/assets/experiencia/video/dimac.mp4"
                   controls
+                  preload="metadata"
                   className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
                 />
               </div>

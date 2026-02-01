@@ -34,39 +34,40 @@ export default function FondoEstrellas({ blueTone }) {
 
 		// Inicializar estrellas en 3D
 		stars.current = Array.from({ length: STAR_COUNT }, () => ({
-			x: randomBetween(-width/2, width/2),
-			y: randomBetween(-height/2, height/2),
-			z: randomBetween(0.1, width/2),
+			x: randomBetween(-width / 2, width / 2),
+			y: randomBetween(-height / 2, height / 2),
+			z: randomBetween(0.1, width / 2),
 		}));
 
-		function draw() {
-			
+		let animationFrameId;
+
+		function render() {
 			ctx.clearRect(0, 0, width, height);
 			for (let star of stars.current) {
 				// Movimiento tipo "Gojo infinito": las estrellas se acercan al centro
 				star.z -= STAR_SPEED * 10;
 				if (star.z < 1) {
-					star.x = randomBetween(-width/2, width/2);
-					star.y = randomBetween(-height/2, height/2);
-					star.z = width/2;
+					star.x = randomBetween(-width / 2, width / 2);
+					star.y = randomBetween(-height / 2, height / 2);
+					star.z = width / 2;
 				}
 				// Proyección 3D
-				const sx = width/2 + star.x * (width/2) / star.z;
-				const sy = height/2 + star.y * (height/2) / star.z;
-				const size = STAR_SIZE * (1 - star.z/(width/2));
+				const sx = width / 2 + star.x * (width / 2) / star.z;
+				const sy = height / 2 + star.y * (height / 2) / star.z;
+				const size = STAR_SIZE * (1 - star.z / (width / 2));
 				ctx.beginPath();
 				ctx.arc(sx, sy, Math.max(size, 0.5), 0, 2 * Math.PI);
 				ctx.fillStyle = STAR_COLOR;
-				ctx.globalAlpha = 0.7 + 0.3 * (1 - star.z/(width/2));
+				ctx.globalAlpha = 0.7 + 0.3 * (1 - star.z / (width / 2));
 				ctx.shadowColor = STAR_COLOR;
-				ctx.shadowBlur = 8 * (1 - star.z/(width/2));
+				ctx.shadowBlur = 8 * (1 - star.z / (width / 2));
 				ctx.fill();
 				ctx.shadowBlur = 0;
 			}
 			ctx.globalAlpha = 1;
-			requestAnimationFrame(draw);
+			animationFrameId = requestAnimationFrame(render);
 		}
-		draw();
+		render();
 
 		function handleResize() {
 			width = window.innerWidth;
@@ -75,13 +76,16 @@ export default function FondoEstrellas({ blueTone }) {
 			canvas.height = height;
 			// Reubicar estrellas
 			stars.current.forEach(star => {
-				star.x = randomBetween(-width/2, width/2);
-				star.y = randomBetween(-height/2, height/2);
-				star.z = randomBetween(0.1, width/2);
+				star.x = randomBetween(-width / 2, width / 2);
+				star.y = randomBetween(-height / 2, height / 2);
+				star.z = randomBetween(0.1, width / 2);
 			});
 		}
 		window.addEventListener("resize", handleResize);
-		return () => window.removeEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+			cancelAnimationFrame(animationFrameId);
+		};
 	}, []);
 
 	return (
