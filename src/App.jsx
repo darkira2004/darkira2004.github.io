@@ -14,6 +14,13 @@ const ProjectsSection = lazy(() => import("./sections/ProjectsSection"));
 const CertificatesSection = lazy(() => import("./sections/CertificatesSection"));
 const TechStackSection = lazy(() => import("./sections/TechStackSection"));
 
+// Componente de carga simple
+const LoadingFallback = () => (
+  <div className="py-20 flex justify-center items-center opacity-50">
+    <div className="animate-pulse h-4 w-32 bg-slate-700/50 rounded"></div>
+  </div>
+);
+
 export default function App() {
   const [activeSection, setActiveSection] = useState("about");
   // Inicializa blueTone con el valor guardado en localStorage o el valor por defecto
@@ -50,13 +57,6 @@ export default function App() {
 
     return () => observer.disconnect();
   }, []);
-
-  // Componente de carga simple
-  const LoadingFallback = () => (
-    <div className="py-20 flex justify-center items-center opacity-50">
-      <div className="animate-pulse h-4 w-32 bg-slate-700/50 rounded"></div>
-    </div>
-  );
 
   return (
     <div className="min-h-screen w-full text-white font-inter relative">
