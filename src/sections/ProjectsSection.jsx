@@ -71,22 +71,40 @@ export default function ProjectsSection() {
               <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
                 2025 — PUBLICACIÓN ACEPTADA
               </span>
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3 flex-wrap">
                 <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-white transition-colors">
                   Publicación Científica · LEIRD / LACCEI
                 </h3>
-                <button
-                  onClick={() => handleOpenDocument("/assets/docs/Contribution_420_final_a.pdf")}
-                  className="
-                    text-xs font-medium text-cyan-400 
-                    border border-cyan-400 rounded px-2 py-0.5
-                    hover:bg-cyan-400/10 transition-colors
-                    cursor-pointer inline-flex items-center gap-1
-                  "
-                >
-                  <DocumentTextIcon className="w-3.5 h-3.5" />
-                  Ver artículo
-                </button>
+                <div className="flex gap-2 flex-wrap">
+                  <a
+                    href="https://laccei.org/LEIRD2025-Cartagena/meta/FP420.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      text-xs font-medium text-emerald-400 
+                      border border-emerald-400 rounded px-2 py-0.5
+                      hover:bg-emerald-400/10 transition-colors
+                      cursor-pointer inline-flex items-center gap-1
+                    "
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    Ver en LACCEI
+                  </a>
+                  <button
+                    onClick={() => handleOpenDocument("/assets/docs/Contribution_420_final_a.pdf")}
+                    className="
+                      text-xs font-medium text-cyan-400 
+                      border border-cyan-400 rounded px-2 py-0.5
+                      hover:bg-cyan-400/10 transition-colors
+                      cursor-pointer inline-flex items-center gap-1
+                    "
+                  >
+                    <DocumentTextIcon className="w-3.5 h-3.5" />
+                    Ver PDF
+                  </button>
+                </div>
               </div>
 
               <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
