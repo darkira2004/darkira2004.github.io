@@ -1,4 +1,4 @@
-import{r as t,j as e}from"./index-CL3l9f96.js";function i(){const[r,s]=t.useState(!1);return e.jsxs("section",{id:"experience",className:"pt-2 py-5","data-label":"experience",children:[e.jsxs("div",{className:"space-y-20",children:[e.jsx("div",{className:`\r
+import{r as t,j as e}from"./index-AmgJpyov.js";function i(){const[r,s]=t.useState(!1);return e.jsxs("section",{id:"experience",className:"pt-2 py-5","data-label":"experience",children:[e.jsxs("div",{className:"space-y-20",children:[e.jsx("div",{className:`\r
             group p-6 md:p-10\r
             transition-all duration-200\r
             border border-transparent\r
