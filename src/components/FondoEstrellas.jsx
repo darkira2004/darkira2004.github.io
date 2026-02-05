@@ -12,17 +12,9 @@ function randomBetween(a, b) {
 export default function FondoEstrellas({ blueTone }) {
 	const canvasRef = useRef(null);
 	const stars = useRef([]);
-	// Leer blueTone de localStorage si no se recibe como prop
-	const [bgTone, setBgTone] = React.useState(blueTone);
-
-	useEffect(() => {
-		if (!blueTone) {
-			const savedTone = localStorage.getItem("blueTone") || "#0f172aff";
-			setBgTone(savedTone);
-		} else {
-			setBgTone(blueTone);
-		}
-	}, [blueTone]);
+	
+	// Usar directamente el prop o leer de localStorage
+	const bgTone = blueTone || localStorage.getItem("blueTone") || "#0f172aff";
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
