@@ -18,6 +18,7 @@ import {
   SiJson,
   SiTypescript,
   SiAngular,
+  SiSupabase,
 } from "react-icons/si";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { SiGithubcopilot } from "react-icons/si";
@@ -27,6 +28,7 @@ const categories = [
   {
     title: "Frontend",
     span: "md:col-span-2",
+    gridCols: "grid-cols-4",
     items: [
       { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
       { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
@@ -41,9 +43,11 @@ const categories = [
   {
     title: "Backend / API",
     span: "md:col-span-1",
+    gridCols: "grid-cols-3",
     items: [
       { name: "Python", icon: <FaPython className="text-blue-400" /> },
       { name: "PHP", icon: <SiPhp className="text-indigo-400" /> },
+      { name: "Supabase", icon: <SiSupabase className="text-emerald-500" /> },
       { name: "API REST", icon: <SiJson className="text-green-500" /> },
       { name: "Swagger", icon: <SiSwagger className="text-yellow-500" /> },
     ],
@@ -51,6 +55,7 @@ const categories = [
   {
     title: "Bases de Datos",
     span: "md:col-span-1",
+    gridCols: "grid-cols-2",
     items: [
       { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-800" /> },
       { name: "SQL Server", icon: <FaDatabase className="text-yellow-500" /> },
@@ -59,6 +64,7 @@ const categories = [
   {
     title: "IA & Visión Computacional",
     span: "md:col-span-1",
+    gridCols: "grid-cols-2",
     items: [
       { name: "YOLO", icon: <GiArtificialIntelligence className="text-purple-400" /> },
       { name: "Deep Learning", icon: <FaBrain className="text-pink-400" /> },
@@ -67,11 +73,13 @@ const categories = [
   {
     title: "Herramientas",
     span: "md:col-span-1",
+    gridCols: "grid-cols-2",
     items: [{ name: "Git", icon: <FaGit className="text-red-500" /> }, { name: "GitHub", icon: <FaGithub className="text-gray-500" /> }],
   },
   {
     title: "Asistentes con IA",
     span: "md:col-span-2",
+    gridCols: "grid-cols-3",
     items: [
       { name: "ChatGPT", icon: <img src="/assets/img/ChatGPT-Logo.svg.png" alt="ChatGPT" className="w-7 h-7 rounded-lg" /> },
       { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-[#78dce8] text-3xl" /> },
@@ -120,7 +128,7 @@ const TechStackSection = () => {
                     </h4>
 
                     {/* GRID DE ICONOS */}
-                    <div className="flex flex-wrap gap-4">
+                    <div className={`grid ${category.gridCols} gap-3`}>
                       {category.items.map((item, itemIdx) => (
                         <div
                           key={itemIdx}
@@ -130,7 +138,7 @@ const TechStackSection = () => {
                           <div className="text-3xl p-2 rounded-lg bg-white/5 group-hover/item:bg-white/10 transition-all">
                             {item.icon}
                           </div>
-                          <span className="text-[9px] text-slate-500 group-hover/item:text-slate-300 transition-colors text-center max-w-[60px] leading-tight">
+                          <span className="text-[9px] text-slate-500 group-hover/item:text-slate-300 transition-colors text-center max-w-[55px] leading-tight">
                             {item.name}
                           </span>
                         </div>
