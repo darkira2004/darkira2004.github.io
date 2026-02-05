@@ -81,7 +81,7 @@ export default function TourGuide({ blueTone }) {
         border-radius: 6px; /* Reduced from 12px to 6px (sm/md) */
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         min-width: 300px;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: 'Inter', sans-serif;
       }
 
       .driver-popover.driverjs-theme .driver-popover-title {
@@ -106,7 +106,7 @@ export default function TourGuide({ blueTone }) {
         color: #e2e8f0;
         border: 1px solid rgba(255, 255, 255, 0.2);
         text-shadow: none;
-        font-family: inherit;
+        font-family: 'Inter', sans-serif;
         font-size: 0.8rem;
         padding: 5px 12px;
         border-radius: 4px; /* Smaller radius */

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   FaJs,
   FaPython,
@@ -6,6 +6,7 @@ import {
   FaCss3Alt,
   FaReact,
   FaGit,
+  FaGithub,
   FaDatabase,
   FaBrain,
 } from "react-icons/fa";
@@ -19,15 +20,13 @@ import {
   SiAngular,
 } from "react-icons/si";
 import { GiArtificialIntelligence } from "react-icons/gi";
-import { FaRobot } from "react-icons/fa6";     // ChatGPT icon substitute
 import { SiGithubcopilot } from "react-icons/si";
-import { MdAssistWalker } from "react-icons/md"; // Claude subtle alt
-import "../components/techstack-animations.css";
 
 /* CATEGORÍAS */
 const categories = [
   {
     title: "Frontend",
+    span: "md:col-span-2",
     items: [
       { name: "JavaScript", icon: <FaJs className="text-yellow-400" /> },
       { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
@@ -41,6 +40,7 @@ const categories = [
   },
   {
     title: "Backend / API",
+    span: "md:col-span-1",
     items: [
       { name: "Python", icon: <FaPython className="text-blue-400" /> },
       { name: "PHP", icon: <SiPhp className="text-indigo-400" /> },
@@ -50,6 +50,7 @@ const categories = [
   },
   {
     title: "Bases de Datos",
+    span: "md:col-span-1",
     items: [
       { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-800" /> },
       { name: "SQL Server", icon: <FaDatabase className="text-yellow-500" /> },
@@ -57,113 +58,88 @@ const categories = [
   },
   {
     title: "IA & Visión Computacional",
+    span: "md:col-span-1",
     items: [
-      { name: "YOLO — Vision AI", icon: <GiArtificialIntelligence className="text-purple-400" /> },
+      { name: "YOLO", icon: <GiArtificialIntelligence className="text-purple-400" /> },
       { name: "Deep Learning", icon: <FaBrain className="text-pink-400" /> },
     ],
   },
   {
     title: "Herramientas",
-    items: [{ name: "Git", icon: <FaGit className="text-red-500" /> }],
+    span: "md:col-span-1",
+    items: [{ name: "Git", icon: <FaGit className="text-red-500" /> }, { name: "GitHub", icon: <FaGithub className="text-gray-500" /> }],
   },
   {
     title: "Asistentes con IA",
+    span: "md:col-span-2",
     items: [
-      { name: "ChatGPT", icon: <img src="/assets/img/ChatGPT-Logo.svg.png" alt="ChatGPT" style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem' }} /> },
-      { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-[#78dce8]" style={{ fontSize: '2.5rem' }} /> },
-      { name: "Claude", icon: <div style={{ width: '5.5rem', height: '2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '1.2rem' }}><img src="/assets/img/Claude_AI_logo.svg.png" alt="Claude" style={{ maxWidth: '95%', maxHeight: '90%' }} /></div> },
+      { name: "ChatGPT", icon: <img src="/assets/img/ChatGPT-Logo.svg.png" alt="ChatGPT" className="w-7 h-7 rounded-lg" /> },
+      { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-[#78dce8] text-3xl" /> },
+      { name: "Claude", icon: <img src="/assets/img/Claude_AI_logo.svg.png" alt="Claude" className="h-7 rounded-xl" /> },
     ],
   },
 ];
 
 const TechStackSection = () => {
-  const [hovered, setHovered] = useState(false);
-  const [activeIdx, setActiveIdx] = useState(-1);
-
-  /* ANIMACIÓN CÍCLICA */
-  useEffect(() => {
-    let interval;
-    if (hovered) {
-      let flat = categories.flatMap((c) => c.items);
-      let idx = -1;
-      interval = setInterval(() => {
-        idx = (idx + 1) % flat.length;
-        setActiveIdx(idx);
-      }, 160);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-      if (!hovered) setActiveIdx(-1);
-    };
-  }, [hovered]);
 
   return (
     <section id="techstack" className="pt-2 py-10" data-label="techstack">
       <div className="space-y-20">
-        <div className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md">
+        <div className="p-6 md:p-10">
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
               <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
                 2024 — PRESENTE
               </span>
-              <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-[#64ffda] transition-colors">
+              <h3 className="text-sm font-medium text-slate-100 tracking-tight">
                 Stack Tecnológico
               </h3>
 
               <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                 Tecnologías utilizadas para construir aplicaciones web, APIs, sistemas administrativos y proyectos de visión computacional con inteligencia artificial
-                (usadas en proyectos reales y personales; en constante proceso de aprendizaje). Algunas tecnologías han sido utilizadas como base o complemento dentro de proyectos específicos, mientras que otras constituyen el foco principal de desarrollo.
+                (usadas en proyectos reales y personales; en constante proceso de aprendizaje).
               </p>
 
-              {/* GRID */}
-              <div
-                className="mt-10 space-y-10"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-              >
-                {categories.map((category, cIdx) => (
-                  <div key={cIdx} className="flex flex-col items-center gap-5">
-                    <div className="w-full h-[1px] bg-slate-700/30"></div>
-                    <span className="text-[11px] uppercase tracking-widest text-slate-400 font-semibold">
+              {/* BENTO GRID */}
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                {categories.map((category, idx) => (
+                  <div
+                    key={idx}
+                    className={`
+                      ${category.span}
+                      group/card
+                      p-5 rounded-lg
+                      bg-white/[0.02] border border-white/10
+                      hover:bg-white/[0.05] hover:border-white/20
+                      transition-all duration-200
+                    `}
+                  >
+                    {/* TÍTULO CATEGORÍA */}
+                    <h4 className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-4">
                       {category.title}
-                    </span>
-                    {/* Linea dividora */}
+                    </h4>
 
-
-                    <div className="flex flex-wrap justify-center gap-8">
-                      {category.items.map((item, idx) => {
-                        const globalIdx =
-                          categories
-                            .slice(0, cIdx)
-                            .flatMap((c) => c.items).length + idx;
-                        const isActive = activeIdx === globalIdx;
-
-                        return (
-                          <div
-                            key={idx}
-                            className={`flex flex-col items-center gap-2 transition-all cursor-pointer ${isActive ? "scale-[1.20]" : "scale-100"
-                              }`}
-                          >
-                            <div
-                              className={`text-5xl p-3 rounded-xl transition-all duration-300 ${isActive
-                                ? "shadow-[0_0_18px_4px_rgba(100,255,218,0.4)] bg-white/5"
-                                : "bg-white/5"
-                                }`}
-                              title={item.name}
-                            >
-                              {item.icon}
-                            </div>
-                            <span className="text-[11px] text-slate-400">
-                              {item.name}
-                            </span>
+                    {/* GRID DE ICONOS */}
+                    <div className="flex flex-wrap gap-4">
+                      {category.items.map((item, itemIdx) => (
+                        <div
+                          key={itemIdx}
+                          className="group/item flex flex-col items-center gap-1.5"
+                          title={item.name}
+                        >
+                          <div className="text-3xl p-2 rounded-lg bg-white/5 group-hover/item:bg-white/10 transition-all">
+                            {item.icon}
                           </div>
-                        );
-                      })}
+                          <span className="text-[9px] text-slate-500 group-hover/item:text-slate-300 transition-colors text-center max-w-[60px] leading-tight">
+                            {item.name}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 ))}
               </div>
-              {/* END GRID */}
+              {/* END BENTO GRID */}
             </div>
           </div>
         </div>

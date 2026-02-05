@@ -1,0 +1,82 @@
+/* Estilos personalizados para el carrusel de DIMAC */
+
+/* Botones de navegación fuera del carrusel */
+.dimac-carousel .swiper-button-next,
+.dimac-carousel .swiper-button-prev {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(15, 23, 42, 0.8);
+  border-radius: 50%;
+  border: 1px solid rgba(100, 255, 218, 0.3);
+  transition: all 0.3s ease;
+}
+
+.dimac-carousel .swiper-button-next::after,
+.dimac-carousel .swiper-button-prev::after {
+  font-size: 16px;
+  color: #64ffda;
+  font-weight: bold;
+}
+
+.dimac-carousel .swiper-button-next:hover,
+.dimac-carousel .swiper-button-prev:hover {
+  background-color: rgba(15, 23, 42, 0.95);
+  border-color: #64ffda;
+  transform: scale(1.1);
+}
+
+.dimac-carousel .swiper-button-next {
+  right: -50px;
+}
+
+.dimac-carousel .swiper-button-prev {
+  left: -50px;
+}
+
+/* Para pantallas pequeñas, ocultar botones (solo táctil) */
+@media (max-width: 768px) {
+  .dimac-carousel .swiper-button-next,
+  .dimac-carousel .swiper-button-prev {
+    display: none;
+  }
+}
+
+/* Modal - Botones más grandes y fuera */
+.dimac-modal-carousel .swiper-button-next,
+.dimac-modal-carousel .swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  border: 2px solid rgba(100, 255, 218, 0.5);
+  transition: all 0.3s ease;
+}
+
+.dimac-modal-carousel .swiper-button-next::after,
+.dimac-modal-carousel .swiper-button-prev::after {
+  font-size: 20px;
+  color: #64ffda;
+  font-weight: bold;
+}
+
+.dimac-modal-carousel .swiper-button-next:hover,
+.dimac-modal-carousel .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  border-color: #64ffda;
+  transform: scale(1.15);
+}
+
+.dimac-modal-carousel .swiper-button-next {
+  right: -70px;
+}
+
+.dimac-modal-carousel .swiper-button-prev {
+  left: -70px;
+}
+
+@media (max-width: 1024px) {
+  .dimac-modal-carousel .swiper-button-next,
+  .dimac-modal-carousel .swiper-button-prev {
+    display: none;
+  }
+}

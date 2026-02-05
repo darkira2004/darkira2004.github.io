@@ -24,14 +24,14 @@ export default function ProjectsSection() {
 
         {/* CARD TESIS YOLO */}
         <div
-          className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md"
+          className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md hover:bg-white/5 hover:border-white/10"
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
               <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
                 2025 — PRESENTE
               </span>
-              <h3 className="text-sm text-slate-100 tracking-tight group-hover:text-[#64ffda] transition-colors">
+              <h3 className="text-sm text-slate-100 tracking-tight group-hover:text-white transition-colors">
                 Proyecto de Tesis · Detección de EPP con YOLO
               </h3>
 
@@ -40,19 +40,6 @@ export default function ProjectsSection() {
                 obra civil en el Perú y desarrollo de un sistema de detección de uso de EPP con YOLO. Mejor
                 resultado obtenido con datos locales: mAP50 = 0.905 con YOLOv8s en el dataset PPE Perú.
               </p>
-
-              <div className="mt-3">
-                <span
-                  className="
-                    inline-block text-[12px] italic text-emerald-400 bg-white/5 backdrop-blur
-                    px-3 py-2 rounded-md border border-white/10 leading-relaxed
-                  "
-                >
-                  Dataset actualmente en acceso restringido por motivos de tesis.
-                  Si estás interesado en acceso para investigación o industria,
-                  acceso disponible bajo solicitud mediante redes de contacto.
-                </span>
-              </div>
 
               <div className="flex justify-center mt-5">
                 <video
@@ -77,7 +64,7 @@ export default function ProjectsSection() {
         <div className="w-full h-[1px] bg-slate-700/30"></div>
         {/* CARD PUBLICACIÓN LEIRD */}
         <div
-          className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md"
+          className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md hover:bg-white/5 hover:border-white/10"
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
@@ -85,7 +72,7 @@ export default function ProjectsSection() {
                 2025 — PUBLICACIÓN ACEPTADA
               </span>
               <div className="flex items-center gap-3">
-                <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-[#64ffda] transition-colors">
+                <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-white transition-colors">
                   Publicación Científica · LEIRD / LACCEI
                 </h3>
                 <button

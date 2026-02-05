@@ -1,8 +1,32 @@
 import { useState } from "react";
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import './experience-carousel.css';
 
 export default function ExperienceSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const dimacImages = [
+    { src: "/assets/experiencia/dimac/dimacLogin.png", alt: "DIMAC - Login" },
+    { src: "/assets/experiencia/dimac/dimacHome.png", alt: "DIMAC - Home" },
+    { src: "/assets/experiencia/dimac/dimacRegistro.png", alt: "DIMAC - Registro" },
+    { src: "/assets/experiencia/dimac/dimacRegistro2.png", alt: "DIMAC - Registro 2" },
+    { src: "/assets/experiencia/dimac/dimacEdicionRegistro.png", alt: "DIMAC - Edición de Registro" },
+    { src: "/assets/experiencia/dimac/dimacEmision.png", alt: "DIMAC - Emisión" },
+    { src: "/assets/experiencia/dimac/dimacExportacion.png", alt: "DIMAC - Exportación" },
+    { src: "/assets/experiencia/dimac/dimacEntrega.png", alt: "DIMAC - Entrega" },
+    { src: "/assets/experiencia/dimac/dimacTablasMaestras.png", alt: "DIMAC - Tablas Maestras" },
+  ];
+
+  const openImageModal = (index) => {
+    setCurrentImageIndex(index);
+    setIsImageModalOpen(true);
+  };
 
   return (
     <section id="experience" className="pt-2 py-5" data-label="experience">
@@ -14,6 +38,7 @@ export default function ExperienceSection() {
             transition-all duration-200
             border border-transparent
             rounded-none md:rounded-md
+            hover:bg-white/5 hover:border-white/10
           "
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
@@ -25,7 +50,7 @@ export default function ExperienceSection() {
                 <h3
                   className="
                     text-sm font-medium text-slate-100 tracking-tight
-                    group-hover:text-[#64ffda] transition-colors
+                    group-hover:text-white transition-colors
                   "
                 >
                   Desarrollador Web · AC Monsefú
@@ -53,7 +78,7 @@ export default function ExperienceSection() {
 
               <div className="flex justify-center mt-5">
                 <img
-                  src="/assets/experiencia/img/golpeTierra2026.png"
+                  src="/assets/experiencia/acmonsefu/golpeTierra2026.png"
                   alt="Golpe Tierra 2026"
                   loading="lazy"
                   className="rounded-sm w-full max-w-xl h-auto shadow-md border border-slate-700/30 transition-colors"
@@ -79,6 +104,7 @@ export default function ExperienceSection() {
             transition-all duration-200
             border border-transparent
             rounded-none md:rounded-md
+            hover:bg-white/5 hover:border-white/10
           "
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
@@ -93,7 +119,7 @@ export default function ExperienceSection() {
                 <h3
                   className="
                     text-sm font-medium text-slate-100 tracking-tight
-                    group-hover:text-[#64ffda] transition-colors
+                    group-hover:text-white transition-colors
                   "
                 >
                   Practicante de Desarrollo Web · DIMAC
@@ -120,14 +146,30 @@ export default function ExperienceSection() {
                 Automación del proceso de emisión de carnets en la Municipalidad de Chiclayo
               </span>
 
-              {/* VIDEO */}
+              {/* CARRUSEL DE IMÁGENES */}
               <div className="flex justify-center mt-5">
-                <video
-                  src="/assets/experiencia/video/dimac.mp4"
-                  controls
-                  preload="metadata"
-                  className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
-                />
+                <div className="w-full max-w-xl dimac-carousel">
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    navigation
+                    pagination={{ clickable: true }}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    className="rounded-sm shadow-md"
+                  >
+                    {dimacImages.map((image, index) => (
+                      <SwiperSlide key={index}>
+                        <img 
+                          src={image.src} 
+                          alt={image.alt}
+                          loading="lazy"
+                          className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
+                          onClick={() => openImageModal(index)}
+                        />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
               </div>
               {/* BADGES */}
               <div className="flex flex-wrap justify-center gap-2 mt-5">
@@ -145,6 +187,7 @@ export default function ExperienceSection() {
         </div>
       </div>
 
+      {/* MODAL CERTIFICADO */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
@@ -162,6 +205,43 @@ export default function ExperienceSection() {
               className="w-full h-full rounded-md shadow-2xl bg-slate-900"
               title="Certificado de Prácticas"
             ></iframe>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL IMÁGENES */}
+      {isImageModalOpen && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-2 md:p-4"
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <div className="relative w-full max-w-7xl h-[95vh] md:h-[90vh] dimac-modal-carousel" onClick={e => e.stopPropagation()}>
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute top-2 right-2 md:top-4 md:right-4 text-slate-300 hover:text-white transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            
+            <Swiper
+              modules={[Navigation, Pagination]}
+              navigation
+              pagination={{ clickable: true }}
+              spaceBetween={0}
+              slidesPerView={1}
+              initialSlide={currentImageIndex}
+              className="w-full h-full !flex !items-center"
+            >
+              {dimacImages.map((image, index) => (
+                <SwiperSlide key={index} className="!flex !items-center !justify-center">
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    className="max-w-full max-h-[90vh] md:max-h-[85vh] w-auto h-auto object-contain"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
       )}
