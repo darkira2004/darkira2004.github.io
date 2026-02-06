@@ -78,12 +78,12 @@ const categories = [
   },
   {
     title: "Asistentes con IA",
-    span: "md:col-span-2",
+    span: "md:col-span-1",
     gridCols: "grid-cols-3",
     items: [
-      { name: "ChatGPT", icon: <img src="/assets/img/ChatGPT-Logo.svg.png" alt="ChatGPT" className="w-7 h-7 rounded-lg" /> },
-      { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-[#78dce8] text-3xl" /> },
-      { name: "Claude", icon: <img src="/assets/img/Claude_AI_logo.svg.png" alt="Claude" className="h-7 rounded-xl" /> },
+      { name: "ChatGPT", icon: <img src="/assets/img/ChatGPT-Logo.svg.png" alt="ChatGPT" className="w-5 h-5 rounded-lg" /> },
+      { name: "GitHub Copilot", icon: <SiGithubcopilot className="text-[#78dce8] text-xl" /> },
+      { name: "Claude", icon: <img src="/assets/img/Claude_AI_logo.svg.png" alt="Claude" className="h-5 rounded-lg" /> },
     ],
   },
 ];
