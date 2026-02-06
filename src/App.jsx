@@ -1,4 +1,4 @@
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState, Suspense, lazy, useRef } from "react";
 import SideNav from "./components/SideNav";
 import Profile from "./components/Profile";
 import SocialLinks from "./components/SocialLinks";
@@ -28,6 +28,18 @@ export default function App() {
     return localStorage.getItem("blueTone") || "#0f172aff";
   });
 
+  const mainRef = useRef(null);
+  const isScrollingRef = useRef(false);
+
+  const handleNavClick = (sectionId) => {
+    isScrollingRef.current = true;
+    setActiveSection(sectionId);
+    // Wait for scroll to likely finish before re-enabling observer updates
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
+  };
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -36,6 +48,9 @@ export default function App() {
     };
 
     const observerCallback = (entries) => {
+      // If we are manually scrolling, ignore observer updates to prevent flickering
+      if (isScrollingRef.current) return;
+
       // Filtramos solo las entradas que intersectan
       const visibleSections = entries.filter(entry => entry.isIntersecting);
 
@@ -52,10 +67,28 @@ export default function App() {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = document.querySelectorAll("section[id]");
-    sections.forEach(section => observer.observe(section));
 
-    return () => observer.disconnect();
+    const updateObservers = () => {
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach(section => observer.observe(section));
+    };
+
+    // Initial observation
+    updateObservers();
+
+    // Use MutationObserver into mainRef to detect when lazy components are mounted
+    const mutationObserver = new MutationObserver(() => {
+      updateObservers();
+    });
+
+    if (mainRef.current) {
+      mutationObserver.observe(mainRef.current, { childList: true, subtree: true });
+    }
+
+    return () => {
+      observer.disconnect();
+      mutationObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -80,14 +113,14 @@ export default function App() {
         <aside className="hidden lg:flex flex-col lg:sticky lg:top-0 h-screen w-[45%] xl:w-[40%] py-20 xl:py-28 pr-8 xl:pr-16">
           <div className="flex flex-col w-full h-full">
             <Profile />
-            <SideNav activeSection={activeSection} />
+            <SideNav activeSection={activeSection} onSectionSelect={handleNavClick} />
             <div className="flex-1 min-h-[100px]" />
             <SocialLinks />
           </div>
         </aside>
 
         {/* COLUMNA DERECHA — CON SCROLL */}
-        <main className="flex-1 lg:w-[55%] xl:w-[60%] py-6 lg:py-24 space-y-2">
+        <main ref={mainRef} className="flex-1 lg:w-[55%] xl:w-[60%] py-6 lg:py-24 space-y-2">
           <CurrentSectionHeader blueTone={blueTone} onBlueToneChange={setBlueTone} />
 
           <AboutSection />
