@@ -6,7 +6,7 @@ import CurrentSectionHeader from "./components/CurrentSectionHeader";
 import AboutSection from "./sections/AboutSection";
 import FondoEstrellas from "./components/FondoEstrellas";
 import BlueToneSelector from "./components/BlueToneSelector";
-import TourGuide from "./components/TourGuide";
+
 
 // Lazy loading de secciones pesadas o que no están en el viewport inicial
 const ExperienceSection = lazy(() => import("./sections/ExperienceSection"));
@@ -60,7 +60,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen w-full text-white font-inter relative">
-      <TourGuide blueTone={blueTone} />
+
       {/* Selector de tema flotante solo en desktop */}
       <div className="hidden lg:block fixed top-6 right-6 z-[9999]">
         <BlueToneSelector value={blueTone} onChange={setBlueTone} />
