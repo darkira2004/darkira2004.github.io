@@ -1,15 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import './experience-carousel.css';
 
 export default function ExperienceSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const dimacImages = [
     { src: "/assets/experiencia/dimac/dimacLogin.png", alt: "DIMAC - Login" },
@@ -23,9 +20,18 @@ export default function ExperienceSection() {
     { src: "/assets/experiencia/dimac/dimacTablasMaestras.png", alt: "DIMAC - Tablas Maestras" },
   ];
 
-  const openImageModal = (index) => {
-    setCurrentImageIndex(index);
-    setIsImageModalOpen(true);
+  const carouselRef = useRef(null);
+
+  const handleFullscreen = () => {
+    if (carouselRef.current) {
+      if (!document.fullscreenElement) {
+        carouselRef.current.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
   };
 
   return (
@@ -148,27 +154,39 @@ export default function ExperienceSection() {
 
               {/* CARRUSEL DE IMÁGENES */}
               <div className="flex justify-center mt-5">
-                <div className="w-full max-w-xl dimac-carousel">
+                <div
+                  className="w-full max-w-xl dimac-carousel relative group/carousel"
+                  ref={carouselRef}
+                >
                   <Swiper
-                    modules={[Navigation, Pagination]}
-                    navigation
+                    modules={[Pagination]}
                     pagination={{ clickable: true }}
                     spaceBetween={0}
                     slidesPerView={1}
-                    className="rounded-sm shadow-md"
+                    className="rounded-sm shadow-md bg-black"
                   >
                     {dimacImages.map((image, index) => (
-                      <SwiperSlide key={index}>
-                        <img 
-                          src={image.src} 
+                      <SwiperSlide key={index} className="flex items-center justify-center bg-black">
+                        <img
+                          src={image.src}
                           alt={image.alt}
                           loading="lazy"
-                          className="w-full h-auto cursor-pointer hover:opacity-90 transition-opacity"
-                          onClick={() => openImageModal(index)}
+                          className="w-full h-auto max-h-[500px] object-contain cursor-grab active:cursor-grabbing"
                         />
                       </SwiperSlide>
                     ))}
                   </Swiper>
+
+                  {/* Botón de pantalla completa */}
+                  <button
+                    onClick={handleFullscreen}
+                    className="absolute bottom-2 right-2 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white/80 hover:text-white transition-all"
+                    title="Pantalla completa"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               {/* BADGES */}
@@ -209,42 +227,7 @@ export default function ExperienceSection() {
         </div>
       )}
 
-      {/* MODAL IMÁGENES */}
-      {isImageModalOpen && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-sm p-2 md:p-4"
-          onClick={() => setIsImageModalOpen(false)}
-        >
-          <div className="relative w-full max-w-7xl h-[95vh] md:h-[90vh] dimac-modal-carousel" onClick={e => e.stopPropagation()}>
-            <button
-              onClick={() => setIsImageModalOpen(false)}
-              className="absolute top-2 right-2 md:top-4 md:right-4 text-white/80 hover:text-white transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
-            
-            <Swiper
-              modules={[Navigation, Pagination]}
-              navigation
-              pagination={{ clickable: true }}
-              spaceBetween={0}
-              slidesPerView={1}
-              initialSlide={currentImageIndex}
-              className="w-full h-full !flex !items-center"
-            >
-              {dimacImages.map((image, index) => (
-                <SwiperSlide key={index} className="!flex !items-center !justify-center">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt}
-                    className="max-w-full max-h-[90vh] md:max-h-[85vh] w-auto h-auto object-contain"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-      )}
+
     </section>
   );
 }

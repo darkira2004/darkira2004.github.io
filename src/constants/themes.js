@@ -8,10 +8,18 @@ export const THEMES = [
   { id: "charcoal", bg: "#121212" }, // Material Dark
   { id: "gunmetal", bg: "#1a1d23" }, // Technical dark grey
   { id: "midnight", bg: "#0f172a" }, // Deep Slate 900
-  { id: "deep-ocean", bg: "#020617" }, // Almost black blue
   { id: "coffee", bg: "#1c1917ca" }, // Stone 900 (Warm dark)
   { id: "nebula", bg: "#18181b" }, // Zinc 900 (Neutral)
   { id: "eclipse", bg: "#0d1117" }, // GitHub Dimmed style
+
+  // VS Code Popular Themes
+  { id: "dracula", bg: "#282a36" }, // Dracula Original
+  { id: "one-dark", bg: "#282c34" }, // Atom One Dark
+  { id: "nord", bg: "#2e3440" }, // Nord Theme
+  { id: "solarized", bg: "#002b36" }, // Solarized Dark
+  { id: "gruvbox", bg: "#282828" }, // Gruvbox Dark Hard
+  { id: "tokyo-night", bg: "#1a1b26" }, // Tokyo Night
+  { id: "catppuccin", bg: "#1e1e2e" }, // Catppuccin Mocha
 ];
 
 const STORAGE_KEY = "themeId";

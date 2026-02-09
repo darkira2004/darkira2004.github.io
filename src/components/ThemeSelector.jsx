@@ -55,12 +55,14 @@ export default function ThemeSelector({
       </button>
 
       {open && (
-        <div className="absolute mt-2 right-0 flex flex-wrap justify-end gap-1.5 p-2 max-w-[160px] rounded-xl backdrop-blur-2xl bg-black/80 border border-white/10 shadow-lg z-50">
+        <div className="absolute mt-2 right-0 grid grid-cols-4 gap-1.5 p-2 min-w-[120px] rounded-xl bg-black/90 border border-white/10 shadow-lg z-50">
           {THEMES.map((theme) => (
             <button
               key={theme.id}
               onClick={() => handleSelect(theme)}
-              className={`w-5 h-5 rounded-full border-2 transition-all hover:scale-110 ${selected.id === theme.id ? "border-white scale-110" : "border-white/20"
+              className={`w-5 h-5 rounded-full border-2 transition-all hover:scale-110 ${selected.id === theme.id
+                ? "border-white scale-110"
+                : "border-white/20"
                 }`}
               style={{ backgroundColor: theme.bg }}
               title={theme.id}
