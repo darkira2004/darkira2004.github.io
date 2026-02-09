@@ -96,13 +96,13 @@ export default function CertificatesSection() {
             <div className="p-6 md:p-10">
                 {/* HEADER / DESCRIPTION */}
                 <div className="mb-8">
-                    <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
+                    <span className="block text-[12px] font-semibold text-white/60 mb-1 leading-6">
                         2021 — PRESENTE
                     </span>
-                    <h3 className="text-sm font-medium text-slate-100 tracking-tight">
+                    <h3 className="text-sm font-medium text-white/95 tracking-tight">
                         Certificaciones y Logros
                     </h3>
-                    <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+                    <p className="text-sm text-white/70 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                         Esta colección reúne los certificados y reconocimientos obtenidos a lo largo de mi formación.
                         Algunos fueron alcanzados hace años, otros más recientes, pero cada uno marcó un momento clave
                         en mi crecimiento técnico y personal. Aunque con el tiempo ciertas habilidades se atenúan,
@@ -194,15 +194,15 @@ export default function CertificatesSection() {
                                 </span>
                             </div>
 
-                            <h3 className={`text-[10px] sm:text-[11px] md:text-xs font-bold text-slate-100 leading-snug line-clamp-3 ${titleHover}`}>
+                            <h3 className={`text-[10px] sm:text-[11px] md:text-xs font-bold text-white/95 leading-snug line-clamp-3 ${titleHover}`}>
                                 {cert.title}
                             </h3>
 
-                            <p className="text-[9px] sm:text-[10px] text-slate-400 leading-snug line-clamp-2">
+                            <p className="text-[9px] sm:text-[10px] text-white/70 leading-snug line-clamp-2">
                                 {cert.description}
                             </p>
 
-                            <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-slate-500 group-hover:text-slate-300 transition-colors">
+                            <div className="flex items-center gap-1 text-[9px] sm:text-[10px] font-semibold text-white/60 group-hover:text-white/80 transition-colors">
                                 <MdVerified className={isBlue ? "text-blue-500" :
                                     isGreen ? "text-emerald-500" :
                                         isYellow ? "text-yellow-400" :
@@ -228,14 +228,14 @@ export default function CertificatesSection() {
                     >
                         <button
                             onClick={() => setIsModalOpen(false)}
-                            className="absolute -top-10 right-0 text-slate-400 hover:text-white"
+                            className="absolute -top-10 right-0 text-white/70 hover:text-white"
                         >
                             ✕
                         </button>
 
                         <iframe
                             src={currentCert}
-                            className="w-full h-full rounded-md shadow-2xl bg-slate-900"
+                            className="w-full h-full rounded-md shadow-2xl bg-black/90"
                             title="Certificado"
                         ></iframe>
                     </div>

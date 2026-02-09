@@ -19,16 +19,16 @@ export default function Profile() {
 
 	return (
 		<>
-			<div className="flex flex-col gap-1.5 font-inter text-slate-100">
-				<h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-bold tracking-tight text-slate-200 leading-tight">
+			<div className="flex flex-col gap-1.5 font-inter text-white/95">
+				<h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-[2.75rem] font-bold tracking-tight text-white/90 leading-tight">
 					Ricardo Villegas
 				</h1>
 
-				<p className="text-base sm:text-lg lg:text-xl font-medium text-slate-200 mt-1">
+				<p className="text-base sm:text-lg lg:text-xl font-medium text-white/90 mt-1">
 					Ingeniería de Sistemas
 				</p>
 
-				<p className="text-sm text-slate-400 leading-relaxed mt-2 max-w-xs lg:max-w-sm">
+				<p className="text-sm text-white/70 leading-relaxed mt-2 max-w-xs lg:max-w-sm">
 					Desarrollador Full Stack en formación, con experiencia práctica en proyectos reales y alta disposición para aprender.
 				</p>
 
@@ -52,14 +52,14 @@ export default function Profile() {
 					>
 						<button
 							onClick={() => setIsModalOpen(false)}
-							className="absolute -top-10 right-0 text-slate-400 hover:text-white"
+							className="absolute -top-10 right-0 text-white/70 hover:text-white"
 						>
 							✕
 						</button>
 
 						<iframe
 							src={cvPath}
-							className="w-full h-full rounded-md shadow-2xl bg-slate-900"
+							className="w-full h-full rounded-md shadow-2xl bg-black/90"
 							title="CV Ricardo Villegas"
 						></iframe>
 					</div>

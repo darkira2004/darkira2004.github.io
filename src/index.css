@@ -14,22 +14,14 @@ html {
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  background: rgb(15, 23, 42);
+  background: #1a1a1a; /* fallback; el tema lo sobrescribe desde App */
   position: relative;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-#spotlight-bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: transparent;
-  transition: background 0.2s ease-out;
+  transition: background-color 0.3s ease;
 }
 
 /* Safe area para dispositivos con notch */
@@ -47,14 +39,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.3);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.5);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .chip {
-  @apply px-3 py-1 rounded-full bg-slate-800/50 text-slate-300 text-sm border border-slate-700/50;
+  @apply px-3 py-1 rounded-sm bg-white/10 text-white/80 text-sm border border-white/20;
 }

@@ -4,8 +4,8 @@ import Profile from "./components/Profile";
 import SocialLinks from "./components/SocialLinks";
 import CurrentSectionHeader from "./components/CurrentSectionHeader";
 import AboutSection from "./sections/AboutSection";
-import FondoEstrellas from "./components/FondoEstrellas";
-import BlueToneSelector from "./components/BlueToneSelector";
+import ThemeSelector from "./components/ThemeSelector";
+import { THEMES } from "./constants/themes";
 
 
 // Lazy loading de secciones pesadas o que no están en el viewport inicial
@@ -17,15 +17,16 @@ const TechStackSection = lazy(() => import("./sections/TechStackSection"));
 // Componente de carga simple
 const LoadingFallback = () => (
   <div className="py-20 flex justify-center items-center opacity-50">
-    <div className="animate-pulse h-4 w-32 bg-slate-700/50 rounded"></div>
+    <div className="animate-pulse h-4 w-32 bg-white/20 rounded"></div>
   </div>
 );
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("about");
-  // Inicializa blueTone con el valor guardado en localStorage o el valor por defecto
-  const [blueTone, setBlueTone] = useState(() => {
-    return localStorage.getItem("blueTone") || "#0f172aff";
+  const [themeColor, setThemeColor] = useState(() => {
+    const stored = localStorage.getItem("themeId");
+    const t = THEMES.find((x) => x.id === stored) || THEMES[1];
+    return t.bg;
   });
 
   const mainRef = useRef(null);
@@ -91,14 +92,20 @@ export default function App() {
     };
   }, []);
 
-  return (
-    <div className="min-h-screen w-full text-white font-inter relative">
+  useEffect(() => {
+    document.body.style.backgroundColor = themeColor;
+    return () => { document.body.style.backgroundColor = ""; };
+  }, [themeColor]);
 
+  return (
+    <div
+      className="min-h-screen w-full text-white font-inter relative transition-colors duration-300"
+      style={{ backgroundColor: themeColor }}
+    >
       {/* Selector de tema flotante solo en desktop */}
       <div className="hidden lg:block fixed top-6 right-6 z-[9999]">
-        <BlueToneSelector value={blueTone} onChange={setBlueTone} />
+        <ThemeSelector value={themeColor} onChange={setThemeColor} />
       </div>
-      <FondoEstrellas blueTone={blueTone} />
 
       <div className="lg:flex min-h-screen relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Perfil solo visible en mobile */}
@@ -121,29 +128,29 @@ export default function App() {
 
         {/* COLUMNA DERECHA — CON SCROLL */}
         <main ref={mainRef} className="flex-1 lg:w-[55%] xl:w-[60%] py-6 lg:py-24 space-y-2">
-          <CurrentSectionHeader blueTone={blueTone} onBlueToneChange={setBlueTone} />
+          <CurrentSectionHeader themeColor={themeColor} onThemeChange={setThemeColor} />
 
-          <AboutSection />
+          <AboutSection themeColor={themeColor} />
 
-          <div className="w-full h-px bg-slate-700/30" />
+          <div className="w-full h-px bg-white/15" />
 
           <Suspense fallback={<LoadingFallback />}>
             <ExperienceSection />
           </Suspense>
 
-          <div className="w-full h-px bg-slate-700/30" />
+          <div className="w-full h-px bg-white/15" />
 
           <Suspense fallback={<LoadingFallback />}>
             <ProjectsSection />
           </Suspense>
 
-          <div className="w-full h-px bg-slate-700/30" />
+          <div className="w-full h-px bg-white/15" />
 
           <Suspense fallback={<LoadingFallback />}>
             <CertificatesSection />
           </Suspense>
 
-          <div className="w-full h-px bg-slate-700/30" />
+          <div className="w-full h-px bg-white/15" />
 
           <Suspense fallback={<LoadingFallback />}>
             <TechStackSection />

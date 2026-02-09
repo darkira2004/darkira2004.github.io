@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import BlueToneSelector from "./BlueToneSelector";
+import ThemeSelector from "./ThemeSelector";
 
-export default function CurrentSectionHeader({ blueTone, onBlueToneChange }) {
+export default function CurrentSectionHeader({ themeColor, onThemeChange }) {
   const [current, setCurrent] = useState("SOBRE MÍ");
 
   const sectionNames = {
@@ -17,7 +17,7 @@ export default function CurrentSectionHeader({ blueTone, onBlueToneChange }) {
       const sections = document.querySelectorAll("section[id]");
       const viewportMiddle = window.innerHeight / 3;
       let closest = { label: "about", distance: Infinity };
-      
+
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
         if (rect.top < viewportMiddle && rect.bottom > 0) {
@@ -27,7 +27,7 @@ export default function CurrentSectionHeader({ blueTone, onBlueToneChange }) {
           }
         }
       });
-      
+
       setCurrent(sectionNames[closest.label] || closest.label.toUpperCase());
     };
 
@@ -38,15 +38,15 @@ export default function CurrentSectionHeader({ blueTone, onBlueToneChange }) {
   }, []);
 
   return (
-    <div 
-      className="lg:hidden fixed top-0 inset-x-0 backdrop-blur-xl z-40 border-b border-white/10 safe-area-inset"
-      style={{ backgroundColor: blueTone ? `${blueTone.slice(0, 7)}e6` : "rgba(0,0,0,0.9)" }}
+    <div
+      className="lg:hidden fixed top-0 inset-x-0 backdrop-blur-2xl z-40 border-b border-white/5 safe-area-inset transition-all duration-300"
+      style={{ backgroundColor: themeColor ? `${themeColor.slice(0, 7)}cc` : "rgba(26,26,26,0.8)" }}
     >
-      <div className="flex items-center justify-between h-12 px-4">
-        <span className="text-xs tracking-[0.2em] text-white/90 font-semibold uppercase">
+      <div className="flex items-center justify-between h-14 px-6">
+        <span className="text-xs font-bold tracking-widest text-white uppercase drop-shadow-sm">
           {current}
         </span>
-        <BlueToneSelector value={blueTone} onChange={onBlueToneChange} />
+        <ThemeSelector value={themeColor} onChange={onThemeChange} className="scale-90" />
       </div>
     </div>
   );

@@ -28,14 +28,14 @@ export default function ProjectsSection() {
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
-              <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
+              <span className="block text-[12px] font-semibold text-white/60 mb-1 leading-6">
                 2025 — PRESENTE
               </span>
-              <h3 className="text-sm text-slate-100 tracking-tight group-hover:text-white transition-colors">
+              <h3 className="text-sm text-white/95 tracking-tight group-hover:text-white transition-colors">
                 Proyecto de Tesis · Detección de EPP con YOLO
               </h3>
 
-              <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+              <p className="text-sm text-white/70 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                 Entrenamiento de modelos YOLO, creación del primer dataset de uso de EPP en escenarios reales de
                 obra civil en el Perú y desarrollo de un sistema de detección de uso de EPP con YOLO. Mejor
                 resultado obtenido con datos locales: mAP50 = 0.905 con YOLOv8s en el dataset PPE Perú.
@@ -46,7 +46,7 @@ export default function ProjectsSection() {
                   src="/assets/proyectos/video/videoYolo.mp4"
                   controls
                   preload="metadata"
-                  className="rounded-sm w-full max-w-xl h-70 shadow-md border border-slate-700/30 transition-colors"
+                  className="rounded-sm w-full max-w-xl h-70 shadow-md border border-white/20 transition-colors"
                 />
               </div>
 
@@ -61,18 +61,18 @@ export default function ProjectsSection() {
             </div>
           </div>
         </div>
-        <div className="w-full h-[1px] bg-slate-700/30"></div>
+        <div className="w-full h-[1px] bg-white/20"></div>
         {/* CARD PUBLICACIÓN LEIRD */}
         <div
           className="group p-6 md:p-10 transition-all duration-200 border border-transparent rounded-none md:rounded-md hover:bg-white/5 hover:border-white/10"
         >
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
-              <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
+              <span className="block text-[12px] font-semibold text-white/60 mb-1 leading-6">
                 2025 — PUBLICACIÓN ACEPTADA
               </span>
               <div className="flex items-start gap-3 flex-wrap">
-                <h3 className="text-sm font-medium text-slate-100 tracking-tight group-hover:text-white transition-colors">
+                <h3 className="text-sm font-medium text-white/95 tracking-tight group-hover:text-white transition-colors">
                   Publicación Científica · LEIRD / LACCEI
                 </h3>
                 <div className="flex gap-2 flex-wrap">
@@ -107,7 +107,7 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+              <p className="text-sm text-white/70 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                 Artículo aceptado como autor principal sobre métodos de inteligencia artificial aplicados
                 a la automatización de procesos en la conferencia LEIRD 2025.
               </p>
@@ -117,7 +117,7 @@ export default function ProjectsSection() {
                   src="/assets/img/LEIRD-2025.png"
                   alt="LEIRD 2025 Banner"
                   loading="lazy"
-                  className="rounded-sm w-full max-w-xl h-auto shadow-md border border-slate-700/30 transition-colors"
+                  className="rounded-sm w-full max-w-xl h-auto shadow-md border border-white/20 transition-colors"
                 />
               </div>
 
@@ -146,14 +146,14 @@ export default function ProjectsSection() {
           >
             <button
               onClick={() => setIsModalOpen(false)}
-              className="absolute -top-10 right-0 text-slate-400 hover:text-white"
+              className="absolute -top-10 right-0 text-white/70 hover:text-white"
             >
               ✕
             </button>
 
             <iframe
               src={currentDoc}
-              className="w-full h-full rounded-md shadow-2xl bg-slate-900"
+              className="w-full h-full rounded-md shadow-2xl bg-black/90"
               title="Documento"
             ></iframe>
           </div>

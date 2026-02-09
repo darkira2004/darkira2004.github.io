@@ -18,7 +18,7 @@ export default function SocialLinks({ className = "" }) {
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-slate-500 hover:text-white transition-all duration-200 hover:scale-110"
+          className="text-white/60 hover:text-white transition-all duration-200 hover:scale-110"
         >
           <link.icon size={20} />
         </a>

@@ -96,14 +96,14 @@ const TechStackSection = () => {
         <div className="p-6 md:p-10">
           <div className="flex flex-col md:flex-row gap-2 md:gap-8">
             <div className="flex-1">
-              <span className="block text-[12px] font-semibold text-slate-500 mb-1 leading-6">
+              <span className="block text-[12px] font-semibold text-white/60 mb-1 leading-6">
                 2024 — PRESENTE
               </span>
-              <h3 className="text-sm font-medium text-slate-100 tracking-tight">
+              <h3 className="text-sm font-medium text-white/95 tracking-tight">
                 Stack Tecnológico
               </h3>
 
-              <p className="text-sm text-slate-400 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+              <p className="text-sm text-white/70 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
                 Tecnologías utilizadas para construir aplicaciones web, APIs, sistemas administrativos y proyectos de visión computacional con inteligencia artificial
                 (usadas en proyectos reales y personales; en constante proceso de aprendizaje).
               </p>
@@ -123,7 +123,7 @@ const TechStackSection = () => {
                     `}
                   >
                     {/* TÍTULO CATEGORÍA */}
-                    <h4 className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-4">
+                    <h4 className="text-[10px] uppercase tracking-widest text-white/70 font-semibold mb-4">
                       {category.title}
                     </h4>
 
@@ -138,7 +138,7 @@ const TechStackSection = () => {
                           <div className="text-3xl p-2 rounded-lg bg-white/5 group-hover/item:bg-white/10 transition-all">
                             {item.icon}
                           </div>
-                          <span className="text-[9px] text-slate-500 group-hover/item:text-slate-300 transition-colors text-center max-w-[55px] leading-tight">
+                          <span className="text-[9px] text-white/60 group-hover/item:text-white/80 transition-colors text-center max-w-[55px] leading-tight">
                             {item.name}
                           </span>
                         </div>

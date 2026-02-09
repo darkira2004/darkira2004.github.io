@@ -21,11 +21,11 @@ export default function SideNav({ activeSection, onSectionSelect }) {
             <span
               className={`block h-px transition-all duration-150 ease-out ${isActive
                 ? "w-16 bg-white"
-                : "w-8 bg-slate-600 group-hover:w-16 group-hover:bg-white"
+                : "w-8 bg-white/40 group-hover:w-16 group-hover:bg-white"
                 }`}
             />
             <span
-              className={`text-[11px] font-semibold uppercase tracking-widest transition-colors ${isActive ? "text-white" : "text-slate-500 group-hover:text-white"
+              className={`text-[11px] font-semibold uppercase tracking-widest transition-colors ${isActive ? "text-white" : "text-white/60 group-hover:text-white"
                 }`}
             >
               {item.label}
