@@ -2,7 +2,7 @@ import { useEffect, useState, Suspense, lazy, useRef } from "react";
 import SideNav from "./components/SideNav";
 import Profile from "./components/Profile";
 import SocialLinks from "./components/SocialLinks";
-import CurrentSectionHeader from "./components/CurrentSectionHeader";
+import Navbar from "./components/Navbar";
 import AboutSection from "./sections/AboutSection";
 import ThemeSelector from "./components/ThemeSelector";
 import { THEMES } from "./constants/themes";
@@ -109,7 +109,7 @@ export default function App() {
 
       <div className="lg:flex min-h-screen relative z-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Perfil solo visible en mobile */}
-        <header className="flex flex-col items-start w-full pt-16 pb-6 lg:hidden">
+        <header className="flex flex-col items-start w-full pt-6 pb-6 lg:hidden">
           <Profile />
           <div className="mt-6">
             <SocialLinks />
@@ -127,8 +127,13 @@ export default function App() {
         </aside>
 
         {/* COLUMNA DERECHA — CON SCROLL */}
-        <main ref={mainRef} className="flex-1 lg:w-[55%] xl:w-[60%] py-6 lg:py-24 space-y-2">
-          <CurrentSectionHeader themeColor={themeColor} onThemeChange={setThemeColor} />
+        <main ref={mainRef} className="flex-1 lg:w-[55%] xl:w-[60%] py-6 pb-24 lg:py-24 space-y-2">
+          <Navbar
+            activeSection={activeSection}
+            onSectionSelect={handleNavClick}
+            themeColor={themeColor}
+            onThemeChange={setThemeColor}
+          />
 
           <AboutSection themeColor={themeColor} />
 

@@ -6,6 +6,7 @@ export default function ThemeSelector({
   value,
   onChange,
   className = "",
+  direction = "down"
 }) {
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
@@ -55,7 +56,10 @@ export default function ThemeSelector({
       </button>
 
       {open && (
-        <div className="absolute mt-2 right-0 grid grid-cols-4 gap-1.5 p-2 min-w-[120px] rounded-xl bg-black/90 border border-white/10 shadow-lg z-50">
+        <div
+          className={`absolute right-0 grid grid-cols-4 gap-1.5 p-2 min-w-[120px] rounded-xl bg-black/90 border border-white/10 shadow-lg z-50 ${direction === "up" ? "bottom-full mb-2" : "mt-2"
+            }`}
+        >
           {THEMES.map((theme) => (
             <button
               key={theme.id}
