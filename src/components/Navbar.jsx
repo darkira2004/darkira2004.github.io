@@ -17,7 +17,7 @@ export default function Navbar({ activeSection, onSectionSelect, themeColor, onT
   return (
     <div className="fixed bottom-6 inset-x-0 z-50 flex justify-center lg:hidden pointer-events-none">
       <nav
-        className="flex items-center gap-2 p-2 backdrop-blur-xl rounded-2xl border shadow-2xl pointer-events-auto transition-all duration-300"
+        className="flex items-center gap-1 p-2 backdrop-blur-xl rounded-2xl border shadow-2xl pointer-events-auto transition-all duration-300 max-w-[92vw] overflow-x-auto [&::-webkit-scrollbar]:hidden"
         style={{
           backgroundColor: `${themeColor}15`,
           borderColor: `${themeColor}40`,
@@ -31,9 +31,9 @@ export default function Navbar({ activeSection, onSectionSelect, themeColor, onT
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => onSectionSelect && onSectionSelect(item.id)}
-                className={`relative flex items-center justify-center h-12 px-4 rounded-xl transition-all duration-500 ease-out`}
+                className={`relative flex items-center justify-center h-12 px-2.5 rounded-xl transition-all duration-500 ease-out`}
                 style={{
-                  minWidth: isActive ? "auto" : "48px"
+                  minWidth: isActive ? "auto" : "40px"
                 }}
               >
                 {isActive && (
@@ -65,7 +65,7 @@ export default function Navbar({ activeSection, onSectionSelect, themeColor, onT
           })}
         </LayoutGroup>
 
-        <div className="w-px h-5 bg-white/10 mx-1.5" />
+        <div className="w-px h-5 bg-white/10 mx-1 shrink-0" />
 
         <div className="mr-1">
           <ThemeSelector
