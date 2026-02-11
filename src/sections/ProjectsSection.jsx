@@ -36,8 +36,8 @@ export default function ProjectsSection() {
               </h3>
 
               <p className="text-sm text-white/70 mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
-                Entrenamiento de modelos YOLO, creación del primer dataset de uso de EPP en escenarios reales de
-                obra civil en el Perú y desarrollo de un sistema de detección de uso de EPP con YOLO. Mejor
+                Entrenamiento de modelos YOLO, creación de un dataset de uso de EPP enfocado en escenarios de
+                construcción en el Perú y desarrollo de un sistema de detección de uso de EPP con YOLO. Mejor
                 resultado obtenido con datos locales: mAP50 = 0.905 con YOLOv8s en el dataset PPE Perú.
               </p>
 
