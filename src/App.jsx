@@ -128,13 +128,6 @@ export default function App() {
 
         {/* COLUMNA DERECHA — CON SCROLL */}
         <main ref={mainRef} className="flex-1 lg:w-[55%] xl:w-[60%] py-6 pb-24 lg:py-24 space-y-2">
-          <Navbar
-            activeSection={activeSection}
-            onSectionSelect={handleNavClick}
-            themeColor={themeColor}
-            onThemeChange={setThemeColor}
-          />
-
           <AboutSection themeColor={themeColor} />
 
           <div className="w-full h-px bg-white/15" />
@@ -162,6 +155,13 @@ export default function App() {
           </Suspense>
         </main>
       </div>
+
+      <Navbar
+        activeSection={activeSection}
+        onSectionSelect={handleNavClick}
+        themeColor={themeColor}
+        onThemeChange={setThemeColor}
+      />
     </div>
   );
 }
