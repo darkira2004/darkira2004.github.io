@@ -14,7 +14,8 @@ html {
 body {
   min-height: 100vh;
   min-height: 100dvh;
-  background: #1a1a1a; /* fallback; el tema lo sobrescribe desde App */
+  background: #1a1a1a;
+  /* fallback; el tema lo sobrescribe desde App */
   position: relative;
   overflow-x: hidden;
   font-family: 'Inter', sans-serif;

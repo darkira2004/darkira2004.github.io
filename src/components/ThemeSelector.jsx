@@ -57,7 +57,7 @@ export default function ThemeSelector({
 
       {open && (
         <div
-          className={`absolute right-0 grid grid-cols-4 gap-1.5 p-2 min-w-[120px] rounded-xl bg-black/90 border border-white/10 shadow-lg z-[999] ${direction === "up" ? "bottom-full mb-2" : "mt-2"
+          className={`absolute right-0 grid grid-cols-4 gap-1.5 p-2 min-w-[120px] rounded-xl bg-black/90 backdrop-blur-sm border border-white/10 shadow-2xl z-[9999] ${direction === "up" ? "bottom-full mb-2" : "mt-2"
             }`}
         >
           {THEMES.map((theme) => (
