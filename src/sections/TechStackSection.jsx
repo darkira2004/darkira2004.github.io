@@ -19,6 +19,7 @@ import {
   SiTypescript,
   SiAngular,
   SiSupabase,
+  SiPaddlepaddle,
 } from "react-icons/si";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { SiGithubcopilot } from "react-icons/si";
@@ -64,10 +65,11 @@ const categories = [
   {
     title: "IA & Visión Computacional",
     span: "md:col-span-1",
-    gridCols: "grid-cols-2",
+    gridCols: "grid-cols-3",
     items: [
       { name: "YOLO", icon: <GiArtificialIntelligence className="text-purple-400" /> },
       { name: "Deep Learning", icon: <FaBrain className="text-pink-400" /> },
+      { name: "PaddleOCR", icon: <SiPaddlepaddle className="text-cyan-400" /> },
     ],
   },
   {
