@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaLaptopCode, FaLeaf, FaTools } from "react-icons/fa";
+import { FaEye, FaLaptopCode, FaLeaf, FaTools } from "react-icons/fa";
 import { MdSchool, MdVerified } from "react-icons/md";
 
 export default function CertificatesSection() {
@@ -18,6 +18,15 @@ export default function CertificatesSection() {
     };
 
     const certificates = [
+        {
+            id: 9,
+            title: "Prácticas preprofesionales · Polybags Perú",
+            year: "2026",
+            icon: <FaEye className="text-2xl" />,
+            description: "Desarrollo full stack y visión computacional aplicada a OCR.",
+            color: "red",
+            path: "/assets/docs/Certificado_Polybags.pdf"
+        },
         {
             id: 1,
             title: "Practicante de Desarrollo Web · DIMAC",

@@ -2,7 +2,6 @@ import { UserIcon, BriefcaseIcon, CodeBracketIcon, TrophyIcon, CpuChipIcon } fro
 // eslint-disable-next-line no-unused-vars
 import { motion, LayoutGroup } from "framer-motion";
 import ThemeSelector from "./ThemeSelector";
-import { label } from "framer-motion/client";
 
 export default function Navbar({ activeSection, onSectionSelect, themeColor, onThemeChange }) {
   const items = [

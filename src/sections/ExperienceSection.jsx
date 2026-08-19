@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import './experience-carousel.css';
 
 export default function ExperienceSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentCertificate, setCurrentCertificate] = useState(null);
 
   const dimacImages = [
     { src: "/assets/experiencia/dimac/dimacLogin.png", alt: "DIMAC - Login" },
@@ -34,9 +34,96 @@ export default function ExperienceSection() {
     }
   };
 
+  const openCertificate = (path, title) => {
+    setCurrentCertificate({ path, title });
+  };
+
+  const closeCertificate = () => {
+    setCurrentCertificate(null);
+  };
+
   return (
     <section id="experience" className="pt-2 py-5" data-label="experience">
       <div className="space-y-20">
+        {/* CARD POLYBAGS */}
+        <div
+          className="
+            group p-6 md:p-10
+            transition-all duration-200
+            border border-transparent
+            rounded-none md:rounded-md
+            hover:bg-white/5 hover:border-white/10
+          "
+        >
+          <div className="flex flex-col md:flex-row gap-2 md:gap-8">
+            <div className="flex-1">
+              <span className="block text-[12px] font-semibold text-white/60 mb-1 leading-6">
+                FEB — JUL 2026
+              </span>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <h3
+                  className="
+                    text-sm font-medium text-white/95 tracking-tight
+                    group-hover:text-white transition-colors
+                  "
+                >
+                  Practicante de Desarrollo Full Stack y Visión Computacional · Polybags Perú
+                </h3>
+                <button
+                  onClick={() => openCertificate(
+                    "/assets/docs/Certificado_Polybags.pdf",
+                    "Certificado de prácticas preprofesionales en Polybags Perú"
+                  )}
+                  className="
+                    text-xs font-medium text-[#64ffda]
+                    border border-[#64ffda] rounded px-2 py-0.5
+                    hover:bg-[#64ffda]/10 transition-colors
+                    cursor-pointer
+                  "
+                >
+                  Ver certificado
+                </button>
+              </div>
+
+              <p className="text-white/70 text-sm mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+                Desarrollé de extremo a extremo un prototipo de plataforma web para la captura,
+                procesamiento y monitoreo de información visual en un entorno industrial. Construí
+                el motor OCR, la API backend y la interfaz web, integrando procesamiento de imágenes
+                con filtros HSV, configuración de regiones de interés y actualización de datos en tiempo real.
+              </p>
+              <span className="text-purple-500 block text-[13px] text-sm mt-2.5 max-w-2xl leading-relaxed text-justify-loose">
+                Desarrollo integral de una solución full stack con OCR y visión computacional
+              </span>
+
+              <figure className="flex flex-col items-center mt-5">
+                <img
+                  src="/assets/experiencia/polybags/ocr.png"
+                  alt="Interfaz de preprocesamiento de una región OCR anonimizada"
+                  loading="lazy"
+                  className="rounded-sm w-full max-w-xl h-auto shadow-md border border-white/20 transition-colors"
+                />
+                <figcaption className="mt-2 max-w-xl text-center text-[11px] leading-relaxed text-white/50">
+                  Configuración visual del preprocesamiento aplicado a una región OCR anonimizada.
+                </figcaption>
+              </figure>
+
+              <div className="flex flex-wrap justify-center gap-2 mt-5">
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-blue-400/10 text-blue-300 ring-blue-400/20 ring-1 ring-inset">React</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-emerald-400/10 text-emerald-300 ring-emerald-400/20 ring-1 ring-inset">Python</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-cyan-400/10 text-cyan-300 ring-cyan-400/20 ring-1 ring-inset">FastAPI</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-indigo-400/10 text-indigo-300 ring-indigo-400/20 ring-1 ring-inset">PostgreSQL</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-orange-400/10 text-orange-300 ring-orange-400/20 ring-1 ring-inset">OpenCV</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-yellow-400/10 text-yellow-300 ring-yellow-400/20 ring-1 ring-inset">PaddleOCR</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-amber-400/10 text-amber-300 ring-amber-400/20 ring-1 ring-inset">Filtros HSV</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-pink-400/10 text-pink-300 ring-pink-400/20 ring-1 ring-inset">WebSockets</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-violet-400/10 text-violet-300 ring-violet-400/20 ring-1 ring-inset">Visión por Computadora</span>
+                <span className="rounded-md px-2 py-1 text-xs font-medium bg-slate-400/10 text-slate-300 ring-slate-400/20 ring-1 ring-inset">shadcn/ui</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* CARD AC MONSEFU */}
         <div
           className="
@@ -131,7 +218,10 @@ export default function ExperienceSection() {
                   Practicante de Desarrollo Web · DIMAC
                 </h3>
                 <button
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={() => openCertificate(
+                    "/assets/docs/Certificado_Practicas.pdf",
+                    "Certificado de prácticas preprofesionales en DIMAC"
+                  )}
                   className="
                     text-xs font-medium text-[#64ffda] 
                     border border-[#64ffda] rounded px-2 py-0.5
@@ -206,22 +296,23 @@ export default function ExperienceSection() {
       </div>
 
       {/* MODAL CERTIFICADO */}
-      {isModalOpen && (
+      {currentCertificate && (
         <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-          onClick={() => setIsModalOpen(false)}
+          onClick={closeCertificate}
         >
           <div className="relative w-full max-w-5xl h-[85vh] flex flex-col animate-fadeIn" onClick={e => e.stopPropagation()}>
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={closeCertificate}
               className="absolute -top-10 right-0 text-white/70 hover:text-white transition-colors"
+              aria-label="Cerrar certificado"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <iframe
-              src="/assets/docs/Certificado_Practicas.pdf"
+              src={currentCertificate.path}
               className="w-full h-full rounded-md shadow-2xl bg-black/90"
-              title="Certificado de Prácticas"
+              title={currentCertificate.title}
             ></iframe>
           </div>
         </div>
